@@ -4,6 +4,11 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.0"
@@ -20,6 +25,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    dataBinding {
+        enabled true
     }
 }
 
@@ -41,6 +50,10 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.lifecycleVersion"
     implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.navigationVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$rootProject.navigationVersion"
+
+    //epoxy
+    implementation 'com.airbnb.android:epoxy:3.4.2'
+    annotationProcessor 'com.airbnb.android:epoxy-processor:3.4.2'
 
     // glide
     implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"

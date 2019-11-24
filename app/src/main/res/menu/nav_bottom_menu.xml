@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/fragment_shop_dest"
+        android:icon="@drawable/ic_shopping_cart_black_24dp"
+        android:title="Shop" />
+
+    <item
+        android:id="@+id/fragment_discover_dest"
+        android:icon="@drawable/ic_remove_red_eye_black_24dp"
+        android:title="Discover" />
+</menu>
