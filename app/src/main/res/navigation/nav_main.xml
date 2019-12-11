@@ -8,8 +8,8 @@
 
     <fragment
         android:id="@+id/fragment_home_dest"
-        android:name="com.uniqlo.uniqloandroidapp.home.HomeFragment"
-        tools:layout="@layout/fragment_home">
+        android:name="com.uniqlo.uniqloandroidapp.discover.DiscoverFragment"
+        tools:layout="@layout/fragment_discover">
     </fragment>
 
 </navigation>

@@ -1,25 +1,23 @@
-package com.uniqlo.uniqloandroidapp.home
+package com.uniqlo.uniqloandroidapp.discover
 
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.uniqlo.uniqloandroidapp.R
-import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.home_appbar.view.*
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_discover.*
+import kotlinx.android.synthetic.main.main_appbar.view.*
 
 /**
  * A simple [Fragment] subclass.
  */
-class HomeFragment : Fragment() {
+class DiscoverFragment : Fragment() {
 
 //    private lateinit var binding: Home
 
-            override fun onCreateView(
+    override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
@@ -29,9 +27,8 @@ class HomeFragment : Fragment() {
 //        binding =
 
         setHasOptionsMenu(true)
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        return inflater.inflate(R.layout.fragment_discover, container, false)
     }
-
 
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -45,21 +42,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
 
-        schedule_appbar.toolbar.run {
 
-            inflateMenu(R.menu.nav_top_menu)
-            setOnMenuItemClickListener()
-            { item ->
-                if (item.itemId == R.id.search) {
-                    Toast.makeText(context, "TODO: Create Search Dialog", Toast.LENGTH_SHORT).show()
-                    true
-                } else {
-                    false
-                }
-
-            }
-
-        }
     }
 
     private fun setupListAdapter() {
@@ -73,4 +56,4 @@ class HomeFragment : Fragment() {
     }
 
 
-    }
+}

@@ -6,9 +6,9 @@
 
     <data>
 
-        <variable
+        <!--<variable
             name="viewmodel"
-            type="com.uniqlo.uniqloandroidapp.home.HomeViewModel" />
+            type="com.uniqlo.uniqloandroidapp.discover.HomeViewModel" />-->
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -18,9 +18,6 @@
         android:fitsSystemWindows="true">
 
 
-        <include
-            android:id="@+id/schedule_appbar"
-            layout="@layout/home_appbar" />
 
 
 
