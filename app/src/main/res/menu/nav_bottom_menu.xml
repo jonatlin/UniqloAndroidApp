@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/fragment_shop_dest"
-        android:icon="@drawable/ic_shopping_cart_black_24dp"
-        android:title="Shop" />
 
     <item
         android:id="@+id/fragment_discover_dest"
         android:icon="@drawable/ic_remove_red_eye_black_24dp"
         android:title="Discover" />
+
+    <item
+        android:id="@+id/fragment_search_dest"
+        android:icon="@drawable/ic_search_black_24dp"
+        android:title="Search" />
+
+    <item
+        android:id="@+id/fragment_cart_dest"
+        android:icon="@drawable/ic_shopping_cart_black_24dp"
+        android:title="Cart" />
+
+    <item
+        android:id="@+id/fragment_profile_dest"
+        android:icon="@drawable/ic_person_black_24dp"
+        android:title="Profile" />
+
 </menu>
