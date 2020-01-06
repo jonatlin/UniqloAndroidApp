@@ -1,4 +1,4 @@
-package com.uniqlo.uniqloandroidapp.search
+package com.uniqlo.uniqloandroidapp.ui.search
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,7 +11,7 @@ import com.uniqlo.uniqloandroidapp.databinding.FragmentSearchBinding
 
 
 class SearchFragment : Fragment() {
-    private lateinit var viewDataBinding: FragmentSearchBinding
+//    private lateinit var viewDataBinding: FragmentSearchBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

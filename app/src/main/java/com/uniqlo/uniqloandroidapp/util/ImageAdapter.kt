@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.uniqlo.uniqloandroidapp.data.Ad
-import com.uniqlo.uniqloandroidapp.discover.AdAdapter
+import com.uniqlo.uniqloandroidapp.adapter.AdAdapter
 
 @BindingAdapter("app:items")
 fun setItems(listView: RecyclerView, items: List<Ad>) {

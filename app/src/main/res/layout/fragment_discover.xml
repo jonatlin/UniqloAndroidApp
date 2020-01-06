@@ -12,7 +12,7 @@
 
         <variable
             name="viewmodel"
-            type="com.uniqlo.uniqloandroidapp.discover.DiscoverViewModel" />
+            type="com.uniqlo.uniqloandroidapp.ui.discover.DiscoverViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -24,7 +24,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/ad_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:items="@{viewmodel.adList}" />
 

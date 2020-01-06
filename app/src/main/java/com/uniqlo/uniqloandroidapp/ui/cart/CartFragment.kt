@@ -1,4 +1,4 @@
-package com.uniqlo.uniqloandroidapp.cart
+package com.uniqlo.uniqloandroidapp.ui.cart
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

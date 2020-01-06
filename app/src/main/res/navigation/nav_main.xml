@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/fragment_discover_dest"
-        android:name="com.uniqlo.uniqloandroidapp.discover.DiscoverFragment"
+        android:name="com.uniqlo.uniqloandroidapp.ui.discover.DiscoverFragment"
         tools:layout="@layout/fragment_discover">
         <action
             android:id="@+id/action_fragment_discover_dest_to_fragment_search_dest"
@@ -21,19 +21,19 @@
 
     <fragment
         android:id="@+id/fragment_search_dest"
-        android:name="com.uniqlo.uniqloandroidapp.search.SearchFragment"
+        android:name="com.uniqlo.uniqloandroidapp.ui.search.SearchFragment"
         tools:layout="@layout/fragment_search">
     </fragment>
 
     <fragment
         android:id="@+id/fragment_cart_dest"
-        android:name="com.uniqlo.uniqloandroidapp.cart.CartFragment"
+        android:name="com.uniqlo.uniqloandroidapp.ui.cart.CartFragment"
         tools:layout="@layout/fragment_cart">
     </fragment>
 
     <fragment
         android:id="@+id/fragment_profile_dest"
-        android:name="com.uniqlo.uniqloandroidapp.profile.ProfileFragment"
+        android:name="com.uniqlo.uniqloandroidapp.ui.profile.ProfileFragment"
         tools:layout="@layout/fragment_profile">
     </fragment>
 

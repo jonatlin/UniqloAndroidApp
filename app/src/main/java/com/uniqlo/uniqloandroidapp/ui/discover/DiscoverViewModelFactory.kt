@@ -1,4 +1,4 @@
-package com.uniqlo.uniqloandroidapp.discover
+package com.uniqlo.uniqloandroidapp.ui.discover
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

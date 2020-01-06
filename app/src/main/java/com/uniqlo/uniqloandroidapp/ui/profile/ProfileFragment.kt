@@ -1,4 +1,4 @@
-package com.uniqlo.uniqloandroidapp.profile
+package com.uniqlo.uniqloandroidapp.ui.profile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

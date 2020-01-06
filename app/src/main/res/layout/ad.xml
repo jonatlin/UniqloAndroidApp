@@ -12,24 +12,43 @@
 
         <variable
             name="viewmodel"
-            type="com.uniqlo.uniqloandroidapp.discover.DiscoverViewModel" />
+            type="com.uniqlo.uniqloandroidapp.ui.discover.DiscoverViewModel" />
 
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="10dp"
+        >
 
         <ImageView
             android:contentDescription="Ad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            android:layout_marginBottom="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:imageFromUrl="@{ad.imageUrl}" />
 
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintWidth_percent="0.6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintVertical_bias="0.8"
+            android:text="@{ad.shortDescription}"
+            android:textSize="27sp"
+            android:textColor="@color/colorPrimaryLight"
+            android:fontFamily="@font/montserrat_bold"
+            />
 
-    </LinearLayout>
+        <!--            android:textColor="#@{ad.textColor}"-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout >
 
 </layout>

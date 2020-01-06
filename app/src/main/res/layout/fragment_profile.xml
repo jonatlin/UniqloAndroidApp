@@ -7,7 +7,7 @@
 
         <variable
             name="viewmodel"
-            type="com.uniqlo.uniqloandroidapp.profile.ProfileFragment" />
+            type="com.uniqlo.uniqloandroidapp.ui.search.SearchViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

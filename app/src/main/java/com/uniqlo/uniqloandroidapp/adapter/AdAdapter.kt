@@ -1,4 +1,4 @@
-package com.uniqlo.uniqloandroidapp.discover
+package com.uniqlo.uniqloandroidapp.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,8 +7,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.uniqlo.uniqloandroidapp.data.Ad
 import com.uniqlo.uniqloandroidapp.databinding.AdBinding
+import com.uniqlo.uniqloandroidapp.ui.discover.DiscoverViewModel
 
-class AdAdapter(private val viewModel: DiscoverViewModel) : ListAdapter<Ad, AdAdapter.ViewHolder>(AdDiffCallback()) {
+class AdAdapter(private val viewModel: DiscoverViewModel) : ListAdapter<Ad, AdAdapter.ViewHolder>(
+    AdDiffCallback()
+) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
@@ -19,7 +22,9 @@ class AdAdapter(private val viewModel: DiscoverViewModel) : ListAdapter<Ad, AdAd
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder.from(parent)
+        return ViewHolder.from(
+            parent
+        )
     }
 
     class ViewHolder private constructor(val binding: AdBinding) :
@@ -37,7 +42,9 @@ class AdAdapter(private val viewModel: DiscoverViewModel) : ListAdapter<Ad, AdAd
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = AdBinding.inflate(layoutInflater, parent, false)
 
-                return ViewHolder(binding)
+                return ViewHolder(
+                    binding
+                )
             }
         }
 
