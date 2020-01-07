@@ -13,7 +13,9 @@ data class Ad constructor (
     @Json(name="DESCRIPTION_SHORT")
     var shortDescription: String,
     @Json(name="TEXT_COLOR")
-    var textColor: String
+    var textColor: String,
+    @Json(name="SHOW_TEXT")
+    var showText: Int
 
 ) {
 
