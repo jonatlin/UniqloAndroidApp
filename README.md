@@ -1,5 +1,5 @@
 # UniqloAndroidApp
-
+🚧 🚧 🚧 🚧 Work in progress 🚧 🚧 🚧 🚧
 This is a redesign of the Uniqlo mobile app.
 
 Backend: https://github.com/jkailin/UniqloBackend
@@ -8,5 +8,5 @@ Backend: https://github.com/jkailin/UniqloBackend
 - Room
 - Coroutines
 - Jetpack
-- Epoxy
+- Retrofit
 - Moshi

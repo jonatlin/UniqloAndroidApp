@@ -7,12 +7,16 @@
     <data>
 
         <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener"/>
+
+        <variable
             name="ad"
             type="com.uniqlo.uniqloandroidapp.data.Ad" />
 
-        <variable
+       <!-- <variable
             name="viewmodel"
-            type="com.uniqlo.uniqloandroidapp.ui.discover.DiscoverViewModel" />
+            type="com.uniqlo.uniqloandroidapp.ui.discover.DiscoverViewModel" />-->
 
     </data>
 
@@ -21,9 +25,12 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:onClick="@{clickListener}"
         >
 
         <ImageView
+            android:id="@+id/image"
             android:contentDescription="Ad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -31,6 +38,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:imageFromUrl="@{ad.imageUrl}" />
 
+        <!-- add hyphenation? "-->
         <TextView
             android:id="@+id/picture_text"
             android:layout_width="0dp"
@@ -46,9 +54,10 @@
             android:textSize="27sp"
             android:textColor="@color/colorPrimaryLight"
             android:fontFamily="@font/montserrat_bold"
+            android:visibility="invisible"
+            android:textAllCaps="true"
             />
 
-        <!--            android:textColor="#@{ad.textColor}"-->
 
     </androidx.constraintlayout.widget.ConstraintLayout >
 

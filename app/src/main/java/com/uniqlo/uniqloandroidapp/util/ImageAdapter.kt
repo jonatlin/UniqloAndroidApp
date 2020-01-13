@@ -1,10 +1,15 @@
 package com.uniqlo.uniqloandroidapp.util
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.request.target.Target
+import com.uniqlo.uniqloandroidapp.R
 import com.uniqlo.uniqloandroidapp.data.Ad
 import com.uniqlo.uniqloandroidapp.adapter.AdAdapter
 
@@ -19,7 +24,10 @@ fun bindImageFromUrl(view: ImageView, imageUrl: String?) {
     if (!imageUrl.isNullOrEmpty()) {
         Glide.with(view.context)
             .load(imageUrl)
+            .override(view.width) // temp fix, doesn't work for portrait pictures
             .transition(DrawableTransitionOptions.withCrossFade())
+//            .placeholder(R.drawable.placeholder) // doesn't work with resizing?
+//            .diskCacheStrategy(DiskCacheStrategy.ALL)
             .into(view)
     }
 }

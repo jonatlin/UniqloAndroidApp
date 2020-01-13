@@ -2,18 +2,29 @@ package com.uniqlo.uniqloandroidapp.adapter
 
 import android.graphics.Color
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.isGone
 import androidx.core.view.isVisible
+import androidx.core.view.updateLayoutParams
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.uniqlo.uniqloandroidapp.R
+import com.uniqlo.uniqloandroidapp.ui.results.ResultsParameters
 import com.uniqlo.uniqloandroidapp.data.Ad
 import com.uniqlo.uniqloandroidapp.databinding.AdBinding
+import com.uniqlo.uniqloandroidapp.ui.discover.DiscoverFragmentDirections
 import com.uniqlo.uniqloandroidapp.ui.discover.DiscoverViewModel
 import kotlinx.android.synthetic.main.ad.view.*
+import timber.log.Timber
 
+/**
+ * Ad.kt adapter for DiscoverFragment.
+ */
 class AdAdapter(private val viewModel: DiscoverViewModel) : ListAdapter<Ad, AdAdapter.ViewHolder>(
     AdDiffCallback()
 ) {
@@ -21,20 +32,26 @@ class AdAdapter(private val viewModel: DiscoverViewModel) : ListAdapter<Ad, AdAd
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
 
+        // works but images resizing causes scroll bar to jump. Also ImageView must be parent.
+       /* var image: ImageView = holder.itemView.findViewById<ImageView>(R.id.image)
+        image.layout(0,0,0,0)*/
+
+        // Image title. Does it look better?
         val textColor: String = "#" + item.textColor
 
-        var shortDescription: TextView =  holder.itemView.findViewById<TextView>(R.id.picture_text)
+        val shortDescription: TextView =  holder.itemView.findViewById<TextView>(R.id.picture_text)
         shortDescription.setTextColor(Color.parseColor(textColor))
 
-        if(item.showText!=1)
-            shortDescription.isVisible = false
+        if(item.showText==1)
+            shortDescription.visibility = View.VISIBLE
+        else
+            shortDescription.visibility = View.INVISIBLE
 
-        holder.bind(viewModel, item)
-
-//        doAnimation(holder.itemView, position)
+        holder.bind(item)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+
         return ViewHolder.from(
             parent
         )
@@ -43,11 +60,30 @@ class AdAdapter(private val viewModel: DiscoverViewModel) : ListAdapter<Ad, AdAd
     class ViewHolder private constructor(val binding: AdBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(viewModel: DiscoverViewModel, item: Ad) {
+        init {
+            binding.setClickListener {
+                binding.ad?.let { ad ->
+                    navigateToAdItems(ad, it)
+                }
+            }
+        }
 
-            binding.viewmodel = viewModel
+        fun bind(item: Ad) {
             binding.ad = item
             binding.executePendingBindings()
+        }
+
+        private fun navigateToAdItems(
+            ad: Ad,
+            view: View
+        ) {
+            val direction =
+                DiscoverFragmentDirections.actionFragmentDiscoverDestToFragmentResultsDest(
+                    ad.adId, null)
+
+            Timber.d("navigate to search results")
+            view.findNavController().navigate(direction)
+
 
         }
 

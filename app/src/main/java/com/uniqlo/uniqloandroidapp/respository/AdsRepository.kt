@@ -10,15 +10,16 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
+import timber.log.Timber
 import java.lang.Exception
+import java.util.*
 
-class AdsRepository(
-//    private val uniqloService: UniqloService
-) {
+class AdsRepository() {
 
     lateinit var uniqloService: UniqloService
     lateinit var retrofitClient: Retrofit
 
+    // dagger? Shouldn't have multiple.
    init {
        retrofitClient = RetrofitFactory.retrofit("http://150.136.152.167:8000/")
        uniqloService = retrofitClient.create(UniqloService::class.java)
@@ -27,24 +28,39 @@ class AdsRepository(
 
     suspend fun getAds(): List<Ad>? {
         try {
+            Timber.d("network call")
             val response = uniqloService.getAds()
             if (response.isSuccessful) {
                 val body = response.body()
 
-                Log.d("abcabc", body.toString())
+                Timber.d(body.toString())
                 return body?.rows
+
             } else {
-                Log.d("MainActivity ", response.errorBody().toString())
+                Timber.d(response.errorBody().toString())
             }
-//        return null
+
         } catch(e: Exception) {
-            Log.d("asdfasdf", e.toString());
+            Timber.d(e.toString())
         }
 
         return emptyList()
-        /*return mutableListOf(Ad(0, "https://objectstorage.us-ashburn-1.oraclecloud.com/n/idi3qahxtzru/b/Uniqlo/o/AD_Men_Dress_Shirts.jpg")
-            ,Ad(1,"https://objectstorage.us-ashburn-1.oraclecloud.com/n/idi3qahxtzru/b/Uniqlo/o/AD_Men_HEATTECH_COLLECTION.jpg" ),
-            Ad(2, "https://objectstorage.us-ashburn-1.oraclecloud.com/n/idi3qahxtzru/b/Uniqlo/o/AD_Women_AIRISM_Collection.jpg"))*/
+
+        // testing
+       /* return mutableListOf(Ad.kt(20, "https://images-na.ssl-images-amazon.com/images/I/711YZCeSW-L._AC_UX679_.jpg", "asdf","000000",1),
+                Ad.kt(21, "https://images-na.ssl-images-amazon.com/images/I/711YZCeSW-L._AC_UX679_.jpg", "asdf","000000",1),
+            Ad.kt(22, "https://onlinepngtools.com/images/examples-onlinepngtools/palm-fronds-and-sky.jpg", "asdf","000000",1),
+            Ad.kt(23, "https://images-na.ssl-images-amazon.com/images/I/711YZCeSW-L._AC_UX679_.jpg", "asdf","000000",1),
+            Ad.kt(24, "http://s3.amazonaws.com/images.seroundtable.com/google-css-images-1515761601.jpg", "asdf","000000",1),
+            Ad.kt(25, "https://images-na.ssl-images-amazon.com/images/I/711YZCeSW-L._AC_UX679_.jpg", "asdf","000000",1),
+            Ad.kt(25, "https://images-na.ssl-images-amazon.com/images/I/711YZCeSW-L._AC_UX679_.jpg", "asdf","000000",1),
+            Ad.kt(25, "https://images-na.ssl-images-amazon.com/images/I/711YZCeSW-L._AC_UX679_.jpg", "asdf","000000",1),
+            Ad.kt(25, "https://images-na.ssl-images-amazon.com/images/I/711YZCeSW-L._AC_UX679_.jpg", "asdf","000000",1),
+            Ad.kt(25, "https://images-na.ssl-images-amazon.com/images/I/711YZCeSW-L._AC_UX679_.jpg", "asdf","000000",1),
+            Ad.kt(24, "http://s3.amazonaws.com/images.seroundtable.com/google-css-images-1515761601.jpg", "asdf","000000",1),
+            Ad.kt(24, "http://s3.amazonaws.com/images.seroundtable.com/google-css-images-1515761601.jpg", "asdf","000000",1),
+            Ad.kt(26, "https://images-na.ssl-images-amazon.com/images/I/711YZCeSW-L._AC_UX679_.jpg", "asdf","000000",1))*/
+
 
     }
 

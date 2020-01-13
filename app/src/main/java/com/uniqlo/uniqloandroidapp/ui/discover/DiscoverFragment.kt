@@ -29,9 +29,11 @@ class DiscoverFragment : Fragment() {
 
         dataBinding = FragmentDiscoverBinding.inflate(inflater, container, false)
 
-        viewModelFactory = DiscoverViewModelFactory()
+        // only if have parameters
+//        viewModelFactory = DiscoverViewModelFactory()
         /*viewModel = ViewModelProviders.of(this, viewModelFactory)
             .get(DiscoverViewModel::class.java)*/
+
         viewModel = ViewModelProviders.of(this)
             .get(DiscoverViewModel::class.java)
 
@@ -49,7 +51,6 @@ class DiscoverFragment : Fragment() {
 
         dataBinding.lifecycleOwner = this.viewLifecycleOwner
         setupListAdapter()
-        setupNavigationObserver()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -68,11 +69,5 @@ class DiscoverFragment : Fragment() {
         }
 
     }
-
-    private fun setupNavigationObserver() {
-
-
-    }
-
 
 }

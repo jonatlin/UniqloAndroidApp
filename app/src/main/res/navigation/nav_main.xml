@@ -10,13 +10,33 @@
         android:id="@+id/fragment_discover_dest"
         android:name="com.uniqlo.uniqloandroidapp.ui.discover.DiscoverFragment"
         tools:layout="@layout/fragment_discover">
-        <action
+        <!--<action
             android:id="@+id/action_fragment_discover_dest_to_fragment_search_dest"
             app:destination="@id/fragment_search_dest" />
         <action
             android:id="@+id/action_fragment_discover_dest_to_fragment_cart_dest"
-            app:destination="@id/fragment_cart_dest" />
+            app:destination="@id/fragment_cart_dest" />-->
+        <action
+            android:id="@+id/action_fragment_discover_dest_to_fragment_results_dest"
+            app:destination="@id/fragment_results_dest" />
+
     </fragment>
+
+    <fragment
+        android:id="@+id/fragment_results_dest"
+        android:name="com.uniqlo.uniqloandroidapp.ui.results.ResultsFragment"
+        tools:layout="@layout/fragment_results">
+        <argument
+            android:name="adId"
+            app:argType="string"
+            app:nullable="true"/>
+        <argument
+            android:name="categoryId"
+            app:argType="string"
+            app:nullable="true"/>
+
+    </fragment>
+
 
 
     <fragment
