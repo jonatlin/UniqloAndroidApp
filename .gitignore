@@ -39,3 +39,6 @@ _sandbox
 
 # Android Studio captures folder
 captures/
+
+# vscode
+.vscode

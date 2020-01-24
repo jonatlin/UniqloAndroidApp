@@ -1,31 +1,25 @@
 package com.uniqlo.uniqloandroidapp.respository
 
-import android.util.Log
-import androidx.lifecycle.LiveData
-import com.bumptech.glide.load.engine.Resource
 import com.uniqlo.uniqloandroidapp.api.RetrofitFactory
 import com.uniqlo.uniqloandroidapp.api.UniqloService
 import com.uniqlo.uniqloandroidapp.data.Ad
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import timber.log.Timber
 import java.lang.Exception
-import java.util.*
 
-class AdsRepository() {
+class AdsRepository {
 
-    lateinit var uniqloService: UniqloService
-    lateinit var retrofitClient: Retrofit
+    var uniqloService: UniqloService
+    var retrofitClient: Retrofit
 
-    // dagger? Shouldn't have multiple.
+    // Shouldn't have multiple retrofit clients? Dagger?
    init {
        retrofitClient = RetrofitFactory.retrofit("http://150.136.152.167:8000/")
        uniqloService = retrofitClient.create(UniqloService::class.java)
 
    }
 
+    // suspend for viewmodel+coroutine compatibility
     suspend fun getAds(): List<Ad>? {
         try {
             Timber.d("network call")

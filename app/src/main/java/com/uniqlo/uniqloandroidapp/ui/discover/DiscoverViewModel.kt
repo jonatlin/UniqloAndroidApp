@@ -21,7 +21,7 @@ class DiscoverViewModel(
 
     fun updateAds() {
 
-        // coroutine on suspend function for network calls
+        // network call coroutine scoped to viewmodel so process tied to lifecycle.
         viewModelScope.launch {
 
             _adList.value = adsRepository.getAds()

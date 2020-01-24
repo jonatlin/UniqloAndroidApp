@@ -42,10 +42,10 @@ class AdAdapter(private val viewModel: DiscoverViewModel) : ListAdapter<Ad, AdAd
         val shortDescription: TextView =  holder.itemView.findViewById<TextView>(R.id.picture_text)
         shortDescription.setTextColor(Color.parseColor(textColor))
 
-        if(item.showText==1)
+       /* if(item.showText==1)
             shortDescription.visibility = View.VISIBLE
         else
-            shortDescription.visibility = View.INVISIBLE
+            shortDescription.visibility = View.INVISIBLE*/
 
         holder.bind(item)
     }

@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.navArgs
 
@@ -33,6 +34,16 @@ class ResultsFragment : Fragment() {
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_results, container, false)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+
+        super.onActivityCreated(savedInstanceState)
+
+
+        (activity as AppCompatActivity).run { supportActionBar?.title = "Results" }
+
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
