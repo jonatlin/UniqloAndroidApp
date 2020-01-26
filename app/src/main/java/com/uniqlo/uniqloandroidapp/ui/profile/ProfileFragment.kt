@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 
 import com.uniqlo.uniqloandroidapp.R
 
@@ -13,6 +14,9 @@ import com.uniqlo.uniqloandroidapp.R
  * A simple [Fragment] subclass.
  */
 class ProfileFragment : Fragment() {
+
+    private lateinit var toolbar: Toolbar
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,6 +26,16 @@ class ProfileFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        // bind resources
+        toolbar = view.findViewById(
+            R.id.toolbar)
+
+        toolbar.title = "Profile"
+
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
 
         super.onActivityCreated(savedInstanceState)
@@ -29,5 +43,7 @@ class ProfileFragment : Fragment() {
 
 
     }
+
+
 
 }

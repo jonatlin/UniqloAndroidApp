@@ -4,9 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.uniqlo.uniqloandroidapp.BR
+import com.uniqlo.uniqloandroidapp.R
 import com.uniqlo.uniqloandroidapp.data.Ad
 import com.uniqlo.uniqloandroidapp.respository.AdsRepository
 import kotlinx.coroutines.launch
+import me.tatarka.bindingcollectionadapter2.ItemBinding
 
 class DiscoverViewModel(
 

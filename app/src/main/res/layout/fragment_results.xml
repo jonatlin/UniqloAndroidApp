@@ -16,17 +16,23 @@
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.results.ResultsFragment"
-    android:fitsSystemWindows="true">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        tools:context=".ui.results.ResultsFragment">
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <include layout="@layout/main_appbar" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="2"
+            app:listItems="@{viewmodel.itemList}"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </layout>

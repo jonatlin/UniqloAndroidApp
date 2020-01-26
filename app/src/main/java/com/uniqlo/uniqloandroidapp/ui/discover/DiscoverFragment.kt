@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.AppBarLayout
 import com.uniqlo.uniqloandroidapp.MainActivity
 import com.uniqlo.uniqloandroidapp.R
@@ -14,6 +15,7 @@ import com.uniqlo.uniqloandroidapp.R
 import com.uniqlo.uniqloandroidapp.adapter.AdAdapter
 import com.uniqlo.uniqloandroidapp.databinding.FragmentDiscoverBinding
 import kotlinx.android.synthetic.main.fragment_discover.view.*
+import kotlinx.android.synthetic.main.fragment_results.view.*
 import kotlinx.android.synthetic.main.main_appbar.*
 import kotlinx.android.synthetic.main.main_appbar.view.*
 
@@ -25,13 +27,10 @@ class DiscoverFragment : Fragment() {
     private lateinit var dataBinding: FragmentDiscoverBinding
 //    private lateinit var epoxyView: EpoxyRecyclerView
     private lateinit var viewModel: DiscoverViewModel
-    private lateinit var viewModelFactory: DiscoverViewModelFactory
-
 
     private lateinit var listAdapter: AdAdapter
     private lateinit var toolbar: Toolbar
-
-
+//    private lateinit var recyclerView: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,16 +49,9 @@ class DiscoverFragment : Fragment() {
 
         dataBinding.viewmodel = viewModel
 
-        setHasOptionsMenu(true)
-
-
-
         return dataBinding.root
 
     }
-
-
-
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -77,10 +69,12 @@ class DiscoverFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         // bind resources
-        /*toolbar = view!!.findViewById(
-            R.id.discover_action_bar)
+        toolbar = view.findViewById(
+            R.id.toolbar)
 
-        toolbar.title = "Discover"*/
+        toolbar.title = "Discover"
+//        var recyclerView = view.findViewById(R.id.recycler_view) as RecyclerView
+//        recyclerView.adapter = listAdapter
 
         viewModel.updateAds()
 
@@ -90,9 +84,13 @@ class DiscoverFragment : Fragment() {
         val viewModel = dataBinding.viewmodel
 
         if (viewModel != null) {
-            listAdapter =
-                AdAdapter(viewModel)
+            listAdapter = AdAdapter(viewModel)
+//            listAdapter.submitList(viewModel.adList.value)
             dataBinding.adList.adapter = listAdapter
+//            var recyclerView = dataBinding.root.recycler_view
+
+//            (dataBinding.adList.adapter as AdAdapter).submitList(viewModel.adList.)
+
         }
 
     }

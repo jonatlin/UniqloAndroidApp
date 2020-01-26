@@ -21,11 +21,12 @@ class ResultsViewModel(
 
     val itemsRepository: ItemsRepository= ItemsRepository()
 
-    fun updateItems(id: String) {
+    fun updateResultItems(id: String) {
 
         viewModelScope.launch {
 
-            _itemList.value = itemsRepository.getAdItems(id)
+            _itemList.value = mutableListOf(Item(),Item(),Item(),Item(),Item())
+//            _itemList.value = itemsRepository.getAdItems(id)
         }
         Timber.d(_itemList.value.toString())
 

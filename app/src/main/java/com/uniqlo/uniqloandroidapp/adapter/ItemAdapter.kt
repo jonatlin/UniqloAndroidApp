@@ -10,36 +10,22 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.uniqlo.uniqloandroidapp.R
-import com.uniqlo.uniqloandroidapp.data.Ad
-import com.uniqlo.uniqloandroidapp.databinding.AdBinding
+import com.uniqlo.uniqloandroidapp.data.Item
+import com.uniqlo.uniqloandroidapp.databinding.ItemBinding
 import com.uniqlo.uniqloandroidapp.ui.discover.DiscoverFragmentDirections
 import com.uniqlo.uniqloandroidapp.ui.discover.DiscoverViewModel
+import kotlinx.android.synthetic.main.item.view.*
 import timber.log.Timber
 
 /**
  * Ad.kt adapter for DiscoverFragment.
  */
-class AdAdapter(private val viewModel: DiscoverViewModel) : ListAdapter<Ad, AdAdapter.ViewHolder>(
-    AdDiffCallback()
+class ItemAdapter : ListAdapter<Item, ItemAdapter.ViewHolder>(
+    ItemDiffCallback()
 ) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
-
-        // works but images resizing causes scroll bar to jump. Also ImageView must be parent.
-       /* var image: ImageView = holder.itemView.findViewById<ImageView>(R.id.image)
-        image.layout(0,0,0,0)*/
-
-        // Image title. Does it look better?
-        val textColor: String = "#" + item.textColor
-
-        val shortDescription: TextView =  holder.itemView.findViewById<TextView>(R.id.picture_text)
-        shortDescription.setTextColor(Color.parseColor(textColor))
-
-       /* if(item.showText==1)
-            shortDescription.visibility = View.VISIBLE
-        else
-            shortDescription.visibility = View.INVISIBLE*/
 
         holder.bind(item)
     }
@@ -51,40 +37,50 @@ class AdAdapter(private val viewModel: DiscoverViewModel) : ListAdapter<Ad, AdAd
         )
     }
 
-    class ViewHolder private constructor(val binding: AdBinding) :
+    class ViewHolder private constructor(val binding: ItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         init {
             binding.setClickListener {
-                binding.ad?.let { ad ->
-                    navigateToAdItems(ad, it)
+                binding.item?.let { item ->
+                    navigateToItemDetails(item, it)
                 }
+            }
+
+            binding.root.favorite_icon.setOnClickListener {
+                val favorite = binding.item?.favorite ?: false
+
+                binding.item?.favorite = !favorite
+                if(favorite)
+                    binding.root.favorite_icon.setImageResource(R.drawable.ic_icn_favorite_large_selected)
+                else
+                    binding.root.favorite_icon.setImageResource(R.drawable.ic_icn_favorite_large_deselected)
+
             }
         }
 
-        fun bind(item: Ad) {
-            binding.ad = item
+        fun bind(item: Item) {
+            binding.item = item
             binding.executePendingBindings()
         }
 
-        private fun navigateToAdItems(
-            ad: Ad,
+        private fun navigateToItemDetails(
+            item: Item,
             view: View
         ) {
-            val direction =
+            /*val direction =
                 DiscoverFragmentDirections.actionFragmentDiscoverDestToFragmentResultsDest(
                     ad.adId, null)
 
             Timber.d("navigate to search results")
-            view.findNavController().navigate(direction)
-
+            view.findNavController().navigate(direction)*/
 
         }
 
         companion object {
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = AdBinding.inflate(layoutInflater, parent, false)
+                val binding = ItemBinding.inflate(layoutInflater, parent, false)
 
                 return ViewHolder(
                     binding
@@ -94,13 +90,13 @@ class AdAdapter(private val viewModel: DiscoverViewModel) : ListAdapter<Ad, AdAd
 
     }
 
-    class AdDiffCallback : DiffUtil.ItemCallback<Ad>() {
-        override fun areItemsTheSame(oldItem: Ad, newItem: Ad): Boolean {
-            return oldItem.adId == newItem.adId
+    class ItemDiffCallback : DiffUtil.ItemCallback<Item>() {
+        override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean {
+            return oldItem.itemId == newItem.itemId
 //            return true
         }
 
-        override fun areContentsTheSame(oldItem: Ad, newItem: Ad): Boolean {
+        override fun areContentsTheSame(oldItem: Item, newItem: Item): Boolean {
             return oldItem == newItem
         }
 

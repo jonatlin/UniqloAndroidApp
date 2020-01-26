@@ -12,10 +12,18 @@ import com.bumptech.glide.request.target.Target
 import com.uniqlo.uniqloandroidapp.R
 import com.uniqlo.uniqloandroidapp.data.Ad
 import com.uniqlo.uniqloandroidapp.adapter.AdAdapter
+import com.uniqlo.uniqloandroidapp.adapter.ItemAdapter
+import com.uniqlo.uniqloandroidapp.data.Item
 
-@BindingAdapter("app:items")
-fun setItems(listView: RecyclerView, items: List<Ad>) {
-    (listView.adapter as AdAdapter).submitList(items)
+@BindingAdapter("app:listItems")
+@Suppress("UNCHECKED_CAST")
+fun setItems(listView: RecyclerView, items: List<*>) {
+//    find better way
+    if(listView.adapter is AdAdapter)
+        (listView.adapter as AdAdapter).submitList(items as List<Ad>)
+    else if(listView.adapter is ItemAdapter)
+        (listView.adapter as ItemAdapter).submitList(items as List<Item>)
+
 
 }
 
