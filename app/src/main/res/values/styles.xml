@@ -6,22 +6,21 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-
         <item name="toolbarStyle">@style/Widget.Uniqlo.Toolbar</item>
+        <item name="fontFamily">@font/source_sans_pro_semibold</item>
+        <item name="android:fontFamily">@font/source_sans_pro_semibold</item>
+
 
     </style>
 
     <style name="Widget.Uniqlo.AppBar" parent="@style/Widget.Design.AppBarLayout">
         <item name="android:background">?android:attr/windowBackground</item>
         <item name="android:elevation">8dp</item>
-<!--        <item name="colorPrimary">@color/colorPrimary</item>-->
     </style>
 
     <style name="Widget.Uniqlo.Toolbar" parent="Widget.MaterialComponents.Toolbar">
         <item name="android:paddingEnd">8dp</item>
         <item name="contentInsetStartWithNavigation">64dp</item>
-        <!--<item name="popupTheme">@style/AppTheme.PopupTheme</item>
-        <item name="titleTextAppearance">@style/TextAppearance.IOSched.ToolbarTitle</item>-->
     </style>
 
     <style name="BottomNavigationStyle" parent="Widget.MaterialComponents.BottomNavigationView">

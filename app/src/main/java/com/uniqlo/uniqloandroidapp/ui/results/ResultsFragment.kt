@@ -7,7 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
+import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 
@@ -17,6 +20,7 @@ import com.uniqlo.uniqloandroidapp.adapter.ItemAdapter
 import com.uniqlo.uniqloandroidapp.databinding.FragmentDiscoverBinding
 import com.uniqlo.uniqloandroidapp.databinding.FragmentResultsBinding
 import com.uniqlo.uniqloandroidapp.ui.discover.DiscoverViewModel
+import kotlinx.android.synthetic.main.main_appbar.view.*
 import timber.log.Timber
 
 /**
@@ -29,6 +33,8 @@ class ResultsFragment : Fragment() {
     private lateinit var viewModel: ResultsViewModel
 
     private lateinit var listAdapter: ItemAdapter
+    private lateinit var toolbar: Toolbar
+
 
 
     override fun onCreateView(
@@ -65,6 +71,8 @@ class ResultsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
+
+
         // convert to non nullable
         if(args.adId!=null) {
             var id: String = args.adId!!
@@ -72,7 +80,17 @@ class ResultsFragment : Fragment() {
             Timber.d(id)
         }
 
+        toolbar = view.findViewById(
+            R.id.toolbar)
 
+        toolbar.title = "Discover"
+
+        dataBinding.root.toolbar.navigationIcon =  AppCompatResources.getDrawable(requireContext(), R.drawable.ic_arrow_back_primary_32dp )
+        (dataBinding.root.toolbar as Toolbar).setNavigationOnClickListener(
+            View.OnClickListener { findNavController().navigateUp() }
+
+
+        )
     }
 
     private fun setupListAdapter() {

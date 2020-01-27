@@ -75,7 +75,7 @@ class AdAdapter(private val viewModel: DiscoverViewModel) : ListAdapter<Ad, AdAd
                 DiscoverFragmentDirections.actionFragmentDiscoverDestToFragmentResultsDest(
                     ad.adId, null)
 
-            Timber.d("navigate to search results")
+            Timber.d("navigate to search results of Ad: ${ad.adId}")
             view.findNavController().navigate(direction)
 
 

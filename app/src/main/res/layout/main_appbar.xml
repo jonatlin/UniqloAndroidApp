@@ -29,7 +29,8 @@
                 app:navigationContentDescription="asdf"
                 app:navigationIcon="@drawable/ic_uniqlo_logo_32x32"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                app:title="Uniqlo">
+                app:title="Uniqlo"
+                >
 
             </androidx.appcompat.widget.Toolbar>
 

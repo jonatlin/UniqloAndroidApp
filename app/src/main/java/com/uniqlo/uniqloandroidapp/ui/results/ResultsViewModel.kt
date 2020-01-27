@@ -19,16 +19,22 @@ class ResultsViewModel(
     val itemList: LiveData<List<Item>>
         get() = _itemList
 
+    private val _totalItems =  MutableLiveData<Int>().apply{ value = 0}
+    val totalItems: LiveData<Int>
+        get() = _totalItems
+
     val itemsRepository: ItemsRepository= ItemsRepository()
 
     fun updateResultItems(id: String) {
 
         viewModelScope.launch {
 
-            _itemList.value = mutableListOf(Item(),Item(),Item(),Item(),Item())
-//            _itemList.value = itemsRepository.getAdItems(id)
+//            _itemList.value = mutableListOf(Item(),Item(),Item(),Item(),Item())
+            _itemList.value = itemsRepository.getAdItems(id)
         }
         Timber.d(_itemList.value.toString())
+
+        _totalItems.value = _itemList.value?.size
 
     }
 

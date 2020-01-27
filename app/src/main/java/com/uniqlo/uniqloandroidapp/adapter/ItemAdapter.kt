@@ -49,9 +49,10 @@ class ItemAdapter : ListAdapter<Item, ItemAdapter.ViewHolder>(
 
             binding.root.favorite_icon.setOnClickListener {
                 val favorite = binding.item?.favorite ?: false
-
                 binding.item?.favorite = !favorite
-                if(favorite)
+                Timber.d("favorite is %b", !favorite)
+
+                if(!favorite)
                     binding.root.favorite_icon.setImageResource(R.drawable.ic_icn_favorite_large_selected)
                 else
                     binding.root.favorite_icon.setImageResource(R.drawable.ic_icn_favorite_large_deselected)

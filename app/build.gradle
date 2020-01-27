@@ -97,8 +97,6 @@ dependencies {
 //    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.1'
 
     // binding collection
-    implementation 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:3.2.0'
-    implementation 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:3.2.0'
-    implementation 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-viewpager2:3.2.0'
+    implementation "com.dropbox.mobile.store:store4:$storeVersion"
 
 }

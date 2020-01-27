@@ -23,15 +23,20 @@
         <include layout="@layout/main_appbar" />
 
 
+        <!--<TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewmodel.totalItems + &quot; Items&quot;}" />-->
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:spanCount="2"
-            app:listItems="@{viewmodel.itemList}"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            />
+            app:listItems="@{viewmodel.itemList}"
+            app:spanCount="2" />
+
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
