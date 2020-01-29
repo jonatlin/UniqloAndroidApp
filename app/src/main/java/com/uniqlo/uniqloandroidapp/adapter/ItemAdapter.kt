@@ -65,6 +65,7 @@ class ItemAdapter : ListAdapter<Item, ItemAdapter.ViewHolder>(
             binding.executePendingBindings()
         }
 
+        // opens a new page to view selected item
         private fun navigateToItemDetails(
             item: Item,
             view: View

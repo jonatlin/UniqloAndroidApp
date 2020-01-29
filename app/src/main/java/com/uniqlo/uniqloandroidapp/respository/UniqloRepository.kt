@@ -1,5 +1,6 @@
 package com.uniqlo.uniqloandroidapp.respository
 
+import com.dropbox.android.external.store4.MemoryPolicy
 import com.dropbox.android.external.store4.Store
 import com.dropbox.android.external.store4.StoreBuilder
 import com.dropbox.android.external.store4.StoreResponse
@@ -12,11 +13,12 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.util.concurrent.TimeUnit
 
 @UseExperimental(FlowPreview::class, ExperimentalCoroutinesApi::class)
 object UniqloRepository {
 
-    private val moshi = Moshi.Builder().build()
+//    private val moshi = Moshi.Builder().build()
 
     // get list of ads for discover page
     fun createAdsStore(app: UniqloApplication): Store<String, List<Ad>> {
@@ -35,6 +37,13 @@ object UniqloRepository {
 
             createRetrofit().getPopularItems(null).body()?.rows ?: emptyList()
         }
+            .cachePolicy(
+            MemoryPolicy.builder()
+                .setMemorySize(5)
+                .setExpireAfterAccess(10) // or setExpireAfterWrite(10)
+                .setExpireAfterTimeUnit(TimeUnit.SECONDS)
+                .build()
+        )
             .build()
     }
 

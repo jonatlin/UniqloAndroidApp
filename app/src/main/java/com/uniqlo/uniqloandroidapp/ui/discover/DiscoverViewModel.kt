@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.dropbox.android.external.store4.ResponseOrigin
 import com.dropbox.android.external.store4.StoreResponse
 import com.dropbox.android.external.store4.fresh
+import com.dropbox.android.external.store4.get
 import com.uniqlo.uniqloandroidapp.BR
 import com.uniqlo.uniqloandroidapp.R
 import com.uniqlo.uniqloandroidapp.UniqloApplication
@@ -57,7 +58,7 @@ class DiscoverViewModel(
 
             _popularItemsList.value = try {
 
-                val data = popularItemsStore.fresh("refresh")
+                val data = popularItemsStore.get("refresh")
                 Timber.d("get popular items: %s", data.toString())
                 StoreResponse.Data(data, ResponseOrigin.Fetcher)
             } catch(e: Exception){
