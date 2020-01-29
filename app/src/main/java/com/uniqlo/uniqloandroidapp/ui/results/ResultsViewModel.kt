@@ -19,6 +19,7 @@ class ResultsViewModel(
     val itemList: LiveData<List<Item>>
         get() = _itemList
 
+    // need for databinding
     private val _totalItems =  MutableLiveData<Int>().apply{ value = 0}
     val totalItems: LiveData<Int>
         get() = _totalItems
@@ -29,12 +30,13 @@ class ResultsViewModel(
 
         viewModelScope.launch {
 
-//            _itemList.value = mutableListOf(Item(),Item(),Item(),Item(),Item())
             _itemList.value = itemsRepository.getAdItems(id)
+            _totalItems.value = _itemList.value?.size
+            Timber.d("items: %d",  _totalItems.value)
         }
-        Timber.d(_itemList.value.toString())
 
-        _totalItems.value = _itemList.value?.size
+
+
 
     }
 

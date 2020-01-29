@@ -27,19 +27,19 @@ class AdAdapter(private val viewModel: DiscoverViewModel) : ListAdapter<Ad, AdAd
         val item = getItem(position)
 
         // works but images resizing causes scroll bar to jump. Also ImageView must be parent.
-       /* var image: ImageView = holder.itemView.findViewById<ImageView>(R.id.image)
-        image.layout(0,0,0,0)*/
+        /* var image: ImageView = holder.itemView.findViewById<ImageView>(R.id.image)
+         image.layout(0,0,0,0)*/
 
         // Image title. Does it look better?
         val textColor: String = "#" + item.textColor
 
-        val shortDescription: TextView =  holder.itemView.findViewById<TextView>(R.id.picture_text)
+        val shortDescription: TextView = holder.itemView.findViewById<TextView>(R.id.picture_text)
         shortDescription.setTextColor(Color.parseColor(textColor))
 
-       /* if(item.showText==1)
-            shortDescription.visibility = View.VISIBLE
-        else
-            shortDescription.visibility = View.INVISIBLE*/
+        /* if(item.showText==1)
+             shortDescription.visibility = View.VISIBLE
+         else
+             shortDescription.visibility = View.INVISIBLE*/
 
         holder.bind(item)
     }
@@ -49,6 +49,22 @@ class AdAdapter(private val viewModel: DiscoverViewModel) : ListAdapter<Ad, AdAd
         return ViewHolder.from(
             parent
         )
+
+        /*val itemView = LayoutInflater.from(
+            parent.context).inflate(R.layout.ad, parent, false)
+        return ViewHolder(itemView)*/
+    }
+
+    class AdDiffCallback : DiffUtil.ItemCallback<Ad>() {
+        override fun areItemsTheSame(oldItem: Ad, newItem: Ad): Boolean {
+            return oldItem.adId == newItem.adId
+//            return true
+        }
+
+        override fun areContentsTheSame(oldItem: Ad, newItem: Ad): Boolean {
+            return oldItem == newItem
+        }
+
     }
 
     class ViewHolder private constructor(val binding: AdBinding) :
@@ -73,11 +89,11 @@ class AdAdapter(private val viewModel: DiscoverViewModel) : ListAdapter<Ad, AdAd
         ) {
             val direction =
                 DiscoverFragmentDirections.actionFragmentDiscoverDestToFragmentResultsDest(
-                    ad.adId, null)
+                    ad.adId, null
+                )
 
             Timber.d("navigate to search results of Ad: ${ad.adId}")
             view.findNavController().navigate(direction)
-
 
         }
 
@@ -94,16 +110,6 @@ class AdAdapter(private val viewModel: DiscoverViewModel) : ListAdapter<Ad, AdAd
 
     }
 
-    class AdDiffCallback : DiffUtil.ItemCallback<Ad>() {
-        override fun areItemsTheSame(oldItem: Ad, newItem: Ad): Boolean {
-            return oldItem.adId == newItem.adId
-//            return true
-        }
 
-        override fun areContentsTheSame(oldItem: Ad, newItem: Ad): Boolean {
-            return oldItem == newItem
-        }
-
-    }
 
 }

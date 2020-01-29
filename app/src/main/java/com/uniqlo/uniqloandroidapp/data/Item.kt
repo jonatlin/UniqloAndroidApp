@@ -20,9 +20,15 @@ data class Item constructor (
 )
 
 @JsonClass(generateAdapter = true)
-data class Items(
+data class AdItems(
     @Json(name="rows")
     val rows: List<Item>,
     @Json(name="name")
     val name: String
+)
+
+@JsonClass(generateAdapter = true)
+data class Items(
+    @Json(name="rows")
+    val rows: List<Item>
 )

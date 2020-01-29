@@ -2,9 +2,7 @@ package com.uniqlo.uniqloandroidapp.respository
 
 import com.uniqlo.uniqloandroidapp.api.RetrofitFactory
 import com.uniqlo.uniqloandroidapp.api.UniqloService
-import com.uniqlo.uniqloandroidapp.data.Ad
 import com.uniqlo.uniqloandroidapp.data.Item
-import com.uniqlo.uniqloandroidapp.data.Items
 import retrofit2.Retrofit
 import timber.log.Timber
 
@@ -13,7 +11,7 @@ class ItemsRepository {
     lateinit var uniqloService: UniqloService
     lateinit var retrofitClient: Retrofit
 
-    // dagger? Shouldn't have multiple
+    // Non-store way
     init {
         retrofitClient = RetrofitFactory.retrofit("http://150.136.152.167:8000/")
         uniqloService = retrofitClient.create(UniqloService::class.java)

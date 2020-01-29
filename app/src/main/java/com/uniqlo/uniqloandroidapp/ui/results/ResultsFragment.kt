@@ -77,7 +77,7 @@ class ResultsFragment : Fragment() {
         if(args.adId!=null) {
             var id: String = args.adId!!
             viewModel.updateResultItems(id)
-            Timber.d(id)
+            Timber.d("Ad ID: %s", id)
         }
 
         toolbar = view.findViewById(
@@ -85,11 +85,10 @@ class ResultsFragment : Fragment() {
 
         toolbar.title = "Discover"
 
+        // create back button and back navigation
         dataBinding.root.toolbar.navigationIcon =  AppCompatResources.getDrawable(requireContext(), R.drawable.ic_arrow_back_primary_32dp )
         (dataBinding.root.toolbar as Toolbar).setNavigationOnClickListener(
             View.OnClickListener { findNavController().navigateUp() }
-
-
         )
     }
 

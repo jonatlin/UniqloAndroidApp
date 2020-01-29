@@ -23,8 +23,6 @@ fun setItems(listView: RecyclerView, items: List<*>) {
         (listView.adapter as AdAdapter).submitList(items as List<Ad>)
     else if(listView.adapter is ItemAdapter)
         (listView.adapter as ItemAdapter).submitList(items as List<Item>)
-
-
 }
 
 @BindingAdapter("imageFromUrl")
@@ -34,7 +32,7 @@ fun bindImageFromUrl(view: ImageView, imageUrl: String?) {
             .load(imageUrl)
             .override(view.width) // temp fix, doesn't work for portrait pictures
             .transition(DrawableTransitionOptions.withCrossFade())
-//            .placeholder(R.drawable.placeholder) // doesn't work with resizing?
+//            .placeholder(R.color.colorPrimaryLight) // doesn't work with resizing?
 //            .diskCacheStrategy(DiskCacheStrategy.ALL)
             .into(view)
     }
