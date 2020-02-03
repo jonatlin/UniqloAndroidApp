@@ -9,6 +9,7 @@ import com.uniqlo.uniqloandroidapp.UniqloApplication
 import com.uniqlo.uniqloandroidapp.api.UniqloService
 import com.uniqlo.uniqloandroidapp.data.Ad
 import com.uniqlo.uniqloandroidapp.data.Item
+import com.uniqlo.uniqloandroidapp.data.Items
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import retrofit2.Retrofit
@@ -26,7 +27,19 @@ object UniqloRepository {
         // Nonflow since HTTP single request vs websocket
         return StoreBuilder.fromNonFlow<String, List<Ad>> {
 
-            createRetrofit().getAds().body()?.rows ?: emptyList()
+            createRetrofit().getAds().body()?.rows ?: mutableListOf(Ad(),Ad())
+        }
+            .build()
+    }
+
+    fun createItemResultsStore(): Store<Pair<String?, String?>, Items> {
+
+        // Nonflow since HTTP single request vs websocket
+        return StoreBuilder.fromNonFlow<Pair<String?, String?>, Items> {
+
+                (itemId, adId) ->
+
+            (createRetrofit().getItems(itemId=itemId, adId=adId).body() ?: Items(emptyList()))
         }
             .build()
     }

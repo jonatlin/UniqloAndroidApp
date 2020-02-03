@@ -17,8 +17,8 @@
         android:title="Cart" />
 
     <item
-        android:id="@+id/fragment_profile_dest"
-        android:icon="@drawable/ic_person_black_24dp"
-        android:title="Profile" />
+        android:id="@+id/fragment_settings_dest"
+        android:icon="@drawable/ic_settings_black_24dp"
+        android:title="Settings" />
 
 </menu>

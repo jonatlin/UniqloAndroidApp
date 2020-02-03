@@ -20,6 +20,12 @@ interface UniqloService{
         @Query("id") id: String
     ): Response<AdItems>
 
+    @GET("getItems")
+    suspend fun getItems(
+        @Query("adId") adId: String?=null,
+        @Query("itemId") itemId: String?=null
+    ): Response<Items>
+
     @GET("getPopularItems")
     suspend fun getPopularItems(
         @Query("limit") limit: Int?

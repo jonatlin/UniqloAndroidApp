@@ -9,12 +9,9 @@ import com.dropbox.android.external.store4.ResponseOrigin
 import com.dropbox.android.external.store4.StoreResponse
 import com.dropbox.android.external.store4.fresh
 import com.dropbox.android.external.store4.get
-import com.uniqlo.uniqloandroidapp.BR
-import com.uniqlo.uniqloandroidapp.R
 import com.uniqlo.uniqloandroidapp.UniqloApplication
 import com.uniqlo.uniqloandroidapp.data.Ad
 import com.uniqlo.uniqloandroidapp.data.Item
-import com.uniqlo.uniqloandroidapp.respository.AdsRepository
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import java.lang.Exception

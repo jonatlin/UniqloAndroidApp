@@ -1,16 +1,13 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <!-- Customize your theme here. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="toolbarStyle">@style/Widget.Uniqlo.Toolbar</item>
-        <item name="fontFamily">@font/source_sans_pro_semibold</item>
-        <item name="android:fontFamily">@font/source_sans_pro_semibold</item>
-
-
+       <!-- <item name="fontFamily">@font/source_sans_pro_semibold</item>
+        <item name="android:fontFamily">@font/source_sans_pro_semibold</item>-->
     </style>
 
     <style name="Widget.Uniqlo.AppBar" parent="@style/Widget.Design.AppBarLayout">
@@ -25,7 +22,22 @@
 
     <style name="BottomNavigationStyle" parent="Widget.MaterialComponents.BottomNavigationView">
         <item name="android:elevation">8dp</item>
+    </style>
 
+    <!--Item Details-->
+    <style name="TextAppearance.Uniqlo.ItemDetails.Title" parent="TextAppearance.MaterialComponents.Headline6" >
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.Uniqlo.ItemDetails.Body" parent="TextAppearance.MaterialComponents.Body1" >
+    </style>
+
+    <!--Settings-->
+    <style name="TextAppearance.Uniqlo.Settings.SectionHeader" parent="TextAppearance.MaterialComponents.Headline5" >
+        <item name="android:textStyle">bold</item>
+        </style>
+
+    <style name="TextAppearance.Uniqlo.Settings.SectionItem" parent="TextAppearance.MaterialComponents.Headline6" >
     </style>
 
 </resources>

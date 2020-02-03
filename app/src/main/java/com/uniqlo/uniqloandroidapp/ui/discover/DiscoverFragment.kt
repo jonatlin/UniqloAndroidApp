@@ -32,8 +32,8 @@ class DiscoverFragment : Fragment() {
     private lateinit var viewModelFactory: DiscoverViewModelFactory
     private lateinit var viewModel: DiscoverViewModel
 
-    private lateinit var listAdapter: AdAdapter
     private lateinit var itemPreviewAdapter: ItemPreviewAdapter
+    private lateinit var adAdapter: AdAdapter
     private lateinit var toolbar: Toolbar
 
     override fun onCreateView(
@@ -50,7 +50,8 @@ class DiscoverFragment : Fragment() {
 
         // init UI components
         dataBinding.viewmodel = viewModel
-        listAdapter = AdAdapter(viewModel)
+
+        adAdapter = AdAdapter()
         itemPreviewAdapter = ItemPreviewAdapter()
 
 
@@ -58,7 +59,11 @@ class DiscoverFragment : Fragment() {
         viewModel.adList.observe(this, Observer { storeResponse: StoreResponse<List<Ad>> ->
 
             when (storeResponse) {
-                is StoreResponse.Error -> Timber.d(storeResponse.error)
+                is StoreResponse.Error -> {
+                    // default values if no backend
+                    updateAdList(mutableListOf(Ad(), Ad(), Ad()))
+                    Timber.d(storeResponse.error)
+                }
                 is StoreResponse.Data -> updateAdList(storeResponse.requireData())
             }
         })
@@ -66,7 +71,16 @@ class DiscoverFragment : Fragment() {
         viewModel.popularItemsList.observe(this, Observer { storeResponse: StoreResponse<List<Item>> ->
 
             when (storeResponse) {
-                is StoreResponse.Error -> Timber.d(storeResponse.error)
+                is StoreResponse.Error -> {
+                    // default values if no backend
+                    updatePopularItemsList(mutableListOf(
+                        Item(imageUrl = "https://objectstorage.us-ashburn-1.oraclecloud.com/n/idi3qahxtzru/b/Uniqlo/o/WOMEN_CASHMERE_CREW_NECK_SWEATER_Gray.jpg"),
+                        Item(imageUrl = "https://objectstorage.us-ashburn-1.oraclecloud.com/n/idi3qahxtzru/b/Uniqlo/o/WOMEN_FLEECE_LONG-SLEEVE_SET_Pink.jpg"),
+                        Item(imageUrl = "https://objectstorage.us-ashburn-1.oraclecloud.com/n/idi3qahxtzru/b/Uniqlo/o/WOMEN_HEATTECH_WARM-LINED_PANTS_Gray.jpg"))
+                    )
+
+                    Timber.d(storeResponse.error)
+                }
                 is StoreResponse.Data -> updatePopularItemsList(storeResponse.requireData())
             }
         })
@@ -97,9 +111,9 @@ class DiscoverFragment : Fragment() {
     private fun updateAdList(data: List<Ad>) {
 
         if(ad_list.adapter==null)
-            ad_list.adapter = listAdapter
+            ad_list.adapter = adAdapter
 
-        listAdapter.submitList(data)
+        adAdapter.submitList(data)
 
     }
 

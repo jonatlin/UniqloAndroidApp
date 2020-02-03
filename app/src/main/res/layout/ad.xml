@@ -4,43 +4,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-        <variable
-            name="clickListener"
-            type="android.view.View.OnClickListener"/>
-
-        <variable
-            name="ad"
-            type="com.uniqlo.uniqloandroidapp.data.Ad" />
-
-       <!-- <variable
-            name="viewmodel"
-            type="com.uniqlo.uniqloandroidapp.ui.discover.DiscoverViewModel" />-->
-
-    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/root_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginBottom="10dp"
         android:backgroundTint="@color/colorPrimaryDark"
-        android:onClick="@{clickListener}"
         >
 
         <ImageView
-            android:id="@+id/image"
+            android:id="@+id/ad_image"
             android:contentDescription="Ad"
+            android:adjustViewBounds="true"
+            android:scaleType="fitStart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:imageFromUrl="@{ad.imageUrl}" />
+            />
 
         <!-- add hyphenation? "-->
         <TextView
-            android:id="@+id/picture_text"
+            android:id="@+id/ad_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintWidth_percent="0.6"
@@ -50,7 +37,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintHorizontal_bias="0.2"
             app:layout_constraintVertical_bias="0.8"
-            android:text="@{ad.shortDescription}"
+            android:text="Description"
             android:textSize="27sp"
             android:textColor="@color/colorPrimaryLight"
             android:fontFamily="@font/montserrat_bold"

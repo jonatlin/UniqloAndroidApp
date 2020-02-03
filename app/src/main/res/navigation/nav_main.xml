@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_fragment_discover_dest_to_fragment_results_dest"
             app:destination="@id/fragment_results_dest" />
+        <action
+            android:id="@+id/action_fragment_discover_dest_to_fragment_item_details_dest"
+            app:destination="@id/fragment_item_details_dest" />
 
     </fragment>
 
@@ -30,14 +33,21 @@
             android:name="adId"
             app:argType="string"
             app:nullable="true"/>
-        <argument
-            android:name="categoryId"
-            app:argType="string"
-            app:nullable="true"/>
+        <action
+            android:id="@+id/action_fragment_results_dest_to_fragment_item_details_dest"
+            app:destination="@id/fragment_item_details_dest" />
 
     </fragment>
 
-
+    <fragment
+        android:id="@+id/fragment_item_details_dest"
+        android:name="com.uniqlo.uniqloandroidapp.ui.itemdetails.ItemDetailsFragment"
+        tools:layout="@layout/fragment_item_details">
+        <argument
+            android:name="itemId"
+            app:argType="string"
+            app:nullable="true"/>
+    </fragment>
 
     <fragment
         android:id="@+id/fragment_search_dest"
@@ -52,9 +62,9 @@
     </fragment>
 
     <fragment
-        android:id="@+id/fragment_profile_dest"
-        android:name="com.uniqlo.uniqloandroidapp.ui.profile.ProfileFragment"
-        tools:layout="@layout/fragment_profile">
+        android:id="@+id/fragment_settings_dest"
+        android:name="com.uniqlo.uniqloandroidapp.ui.settings.SettingsFragment"
+        tools:layout="@layout/fragment_settings">
     </fragment>
 
 </navigation>
