@@ -24,12 +24,35 @@
         <item name="android:elevation">8dp</item>
     </style>
 
+    <!--Discover-->
+    <style name="Widget.Uniqlo.AdCardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">16dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="strokeColor">@color/colorAccent</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+
+    <style name="TextAppearance.Uniqlo.Discover.SectionHeader" parent="TextAppearance.MaterialComponents.Headline5" >
+        <item name="android:textColor">?android:textColorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Uniqlo.Discover.ItemTitle" parent="TextAppearance.MaterialComponents.Headline6" >
+        <item name="android:textColor">?android:textColorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Uniqlo.Discover.ItemBody" parent="TextAppearance.MaterialComponents.Body1" >
+        <item name="android:textColor">?android:textColorSecondary</item>
+    </style>
+
+
     <!--Item Details-->
-    <style name="TextAppearance.Uniqlo.ItemDetails.Title" parent="TextAppearance.MaterialComponents.Headline6" >
-        <item name="android:textStyle">bold</item>
+    <style name="TextAppearance.Uniqlo.ItemDetails.Title" parent="TextAppearance.MaterialComponents.Headline5" >
+        <item name="android:textColor">?android:textColorPrimary</item>
     </style>
 
     <style name="TextAppearance.Uniqlo.ItemDetails.Body" parent="TextAppearance.MaterialComponents.Body1" >
+        <item name="android:textColor">?android:textColorSecondary</item>
+
     </style>
 
     <!--Settings-->

@@ -8,10 +8,14 @@ data class Ad constructor (
 
     @Json(name="AD_ITEM_ID")
     var adId: String = "0",
+    @Json(name="NAME")
+    var name: String = "name",
     @Json(name="AD_ITEM_IMAGE")
     var imageUrl: String= "https://objectstorage.us-ashburn-1.oraclecloud.com/n/idi3qahxtzru/b/Uniqlo/o/AD_MARIMEKKO_MERINO-BLEND_PANTS_Brown.jpg",
+    @Json(name="DESCRIPTION")
+    var description: String="description",
     @Json(name="DESCRIPTION_SHORT")
-    var shortDescription: String="description",
+    var shortDescription: String="short description",
     @Json(name="TEXT_COLOR")
     var textColor: String="ffffff",
     @Json(name="SHOW_TEXT")

@@ -13,7 +13,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.uniqlo.uniqloandroidapp.R
 import com.uniqlo.uniqloandroidapp.data.Ad
-import com.uniqlo.uniqloandroidapp.databinding.AdBinding
 import com.uniqlo.uniqloandroidapp.ui.discover.DiscoverFragmentDirections
 import com.uniqlo.uniqloandroidapp.ui.discover.DiscoverViewModel
 import kotlinx.android.synthetic.main.ad.view.*
@@ -84,7 +83,8 @@ class AdAdapter : ListAdapter<Ad, AdAdapter.AdViewHolder>(
                 .placeholder(R.color.colorPrimaryLight) // doesn't work with resizing?
                 .into(itemView.ad_image)
 
-            itemView.ad_text.setText(ad.shortDescription)
+            itemView.ad_name.text = ad.name
+            itemView.ad_description.text=ad.description
 
         }
 

@@ -21,7 +21,6 @@ import com.uniqlo.uniqloandroidapp.R
 import com.uniqlo.uniqloandroidapp.adapter.AdAdapter
 import com.uniqlo.uniqloandroidapp.adapter.ItemAdapter
 import com.uniqlo.uniqloandroidapp.data.Item
-import com.uniqlo.uniqloandroidapp.databinding.FragmentDiscoverBinding
 import com.uniqlo.uniqloandroidapp.databinding.FragmentResultsBinding
 import com.uniqlo.uniqloandroidapp.ui.discover.DiscoverViewModel
 import com.uniqlo.uniqloandroidapp.ui.discover.DiscoverViewModelFactory

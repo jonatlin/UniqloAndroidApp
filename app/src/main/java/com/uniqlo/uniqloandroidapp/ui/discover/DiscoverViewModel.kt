@@ -32,14 +32,14 @@ class DiscoverViewModel(
     val popularItemsList: LiveData<StoreResponse<List<Item>>>
         get() = _popularItemsList
 
-    fun refreshAds() {
+    fun refreshAds(isForce: Boolean = false) {
 
         // network/cache/db call coroutine scoped to ViewModel
         viewModelScope.launch {
 
             _adList.value = try {
+                val data = if (isForce) adsStore.fresh("refresh") else adsStore.get("refresh")
 
-                val data = adsStore.fresh("refresh")
                 Timber.d("get ads: %s", data.toString())
                 StoreResponse.Data(data, ResponseOrigin.Fetcher)
             } catch(e: Exception){
@@ -48,14 +48,14 @@ class DiscoverViewModel(
         }
     }
 
-    fun refreshPopularItems() {
+    fun refreshPopularItems(isForce: Boolean = false) {
 
         // network/cache/db call coroutine scoped to ViewModel
         viewModelScope.launch {
 
             _popularItemsList.value = try {
 
-                val data = popularItemsStore.get("refresh")
+                val data = if (isForce) popularItemsStore.fresh("refresh") else popularItemsStore.get("refresh")
                 Timber.d("get popular items: %s", data.toString())
                 StoreResponse.Data(data, ResponseOrigin.Fetcher)
             } catch(e: Exception){

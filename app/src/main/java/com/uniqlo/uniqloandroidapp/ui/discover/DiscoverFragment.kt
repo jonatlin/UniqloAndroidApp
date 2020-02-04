@@ -18,7 +18,7 @@ import com.uniqlo.uniqloandroidapp.adapter.AdAdapter
 import com.uniqlo.uniqloandroidapp.adapter.ItemPreviewAdapter
 import com.uniqlo.uniqloandroidapp.data.Ad
 import com.uniqlo.uniqloandroidapp.data.Item
-import com.uniqlo.uniqloandroidapp.databinding.FragmentDiscoverBinding
+//import com.uniqlo.uniqloandroidapp.databinding.FragmentDiscoverBinding
 import kotlinx.android.synthetic.main.fragment_discover.*
 import timber.log.Timber
 
@@ -27,7 +27,7 @@ import timber.log.Timber
  */
 class DiscoverFragment : Fragment() {
 
-    private lateinit var dataBinding: FragmentDiscoverBinding
+    //    private lateinit var dataBinding: FragmentDiscoverBinding
 //    private lateinit var epoxyView: EpoxyRecyclerView
     private lateinit var viewModelFactory: DiscoverViewModelFactory
     private lateinit var viewModel: DiscoverViewModel
@@ -36,12 +36,19 @@ class DiscoverFragment : Fragment() {
     private lateinit var adAdapter: AdAdapter
     private lateinit var toolbar: Toolbar
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        setHasOptionsMenu(true)
+
+        super.onCreate(savedInstanceState)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        dataBinding = FragmentDiscoverBinding.inflate(inflater, container, false)
+//        dataBinding = FragmentDiscoverBinding.inflate(inflater, container, false)
+        val root = inflater.inflate(R.layout.fragment_discover, container, false)
 
         // only if have parameters
         viewModelFactory = DiscoverViewModelFactory(activity!!.application)
@@ -49,7 +56,7 @@ class DiscoverFragment : Fragment() {
             .get(DiscoverViewModel::class.java)
 
         // init UI components
-        dataBinding.viewmodel = viewModel
+//        dataBinding.viewmodel = viewModel
 
         adAdapter = AdAdapter()
         itemPreviewAdapter = ItemPreviewAdapter()
@@ -68,49 +75,77 @@ class DiscoverFragment : Fragment() {
             }
         })
 
-        viewModel.popularItemsList.observe(this, Observer { storeResponse: StoreResponse<List<Item>> ->
+        viewModel.popularItemsList.observe(
+            this,
+            Observer { storeResponse: StoreResponse<List<Item>> ->
 
-            when (storeResponse) {
-                is StoreResponse.Error -> {
-                    // default values if no backend
-                    updatePopularItemsList(mutableListOf(
-                        Item(imageUrl = "https://objectstorage.us-ashburn-1.oraclecloud.com/n/idi3qahxtzru/b/Uniqlo/o/WOMEN_CASHMERE_CREW_NECK_SWEATER_Gray.jpg"),
-                        Item(imageUrl = "https://objectstorage.us-ashburn-1.oraclecloud.com/n/idi3qahxtzru/b/Uniqlo/o/WOMEN_FLEECE_LONG-SLEEVE_SET_Pink.jpg"),
-                        Item(imageUrl = "https://objectstorage.us-ashburn-1.oraclecloud.com/n/idi3qahxtzru/b/Uniqlo/o/WOMEN_HEATTECH_WARM-LINED_PANTS_Gray.jpg"))
-                    )
+                when (storeResponse) {
+                    is StoreResponse.Error -> {
+                        // default values if no backend
+                        updatePopularItemsList(
+                            mutableListOf(
+                                Item(imageUrl = "https://objectstorage.us-ashburn-1.oraclecloud.com/n/idi3qahxtzru/b/Uniqlo/o/WOMEN_CASHMERE_CREW_NECK_SWEATER_Gray.jpg"),
+                                Item(imageUrl = "https://objectstorage.us-ashburn-1.oraclecloud.com/n/idi3qahxtzru/b/Uniqlo/o/WOMEN_FLEECE_LONG-SLEEVE_SET_Pink.jpg"),
+                                Item(imageUrl = "https://objectstorage.us-ashburn-1.oraclecloud.com/n/idi3qahxtzru/b/Uniqlo/o/WOMEN_HEATTECH_WARM-LINED_PANTS_Gray.jpg")
+                            )
+                        )
 
-                    Timber.d(storeResponse.error)
+                        Timber.d(storeResponse.error)
+                    }
+                    is StoreResponse.Data -> updatePopularItemsList(storeResponse.requireData())
                 }
-                is StoreResponse.Data -> updatePopularItemsList(storeResponse.requireData())
-            }
-        })
+            })
 
-        return dataBinding.root
-
+//        return dataBinding.root
+        return root;
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        dataBinding.lifecycleOwner = this.viewLifecycleOwner
+//        dataBinding.lifecycleOwner = this.viewLifecycleOwner
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         // bind resources
         toolbar = view.findViewById(
-            R.id.toolbar)
+            R.id.toolbar
+        )
 
         toolbar.title = "Discover"
+        toolbar.inflateMenu(R.menu.discover_menu)
+        toolbar.setOnMenuItemClickListener(
+
+            Toolbar.OnMenuItemClickListener {
+                when (it.itemId) {
+                    R.id.menu_refresh -> {
+                        viewModel.refreshPopularItems(true)
+                        viewModel.refreshAds(true)
+                        true
+                    }
+
+                    else -> {
+                        Timber.d("")
+                        true
+                    }
+
+                }
+            }
+        )
+
+
+
 
         viewModel.refreshAds()
         viewModel.refreshPopularItems()
 
     }
 
+
     private fun updateAdList(data: List<Ad>) {
 
-        if(ad_list.adapter==null)
+        if (ad_list.adapter == null)
             ad_list.adapter = adAdapter
 
         adAdapter.submitList(data)
@@ -119,7 +154,7 @@ class DiscoverFragment : Fragment() {
 
     private fun updatePopularItemsList(data: List<Item>) {
 
-        if(popular_items_list.adapter ==null)
+        if (popular_items_list.adapter == null)
             popular_items_list.adapter = itemPreviewAdapter
 
         itemPreviewAdapter.submitList(data)

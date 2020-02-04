@@ -1,11 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_margin="@dimen/margin_normal"
+    style="@style/Widget.Uniqlo.AdCardView"
     xmlns:tools="http://schemas.android.com/tools">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/root_view"
+        android:orientation="vertical"
+        android:layout_marginBottom="@dimen/margin_normal"
+        >
+    <ImageView
+        android:id="@+id/ad_image"
+        android:contentDescription="Ad"
+        android:adjustViewBounds="true"
+        android:scaleType="fitStart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+        <TextView
+            android:id="@+id/ad_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_small"
+            android:text=""
+            android:textAlignment="viewStart"
+            android:textAppearance="@style/TextAppearance.Uniqlo.Discover.ItemTitle"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ad_image" />
+
+        <TextView
+            android:id="@+id/ad_description"
+            style="@style/TextAppearance.Uniqlo.Discover.ItemBody"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_small"
+            android:text=""
+            android:textAlignment="viewStart"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ad_name"
+            app:layout_goneMarginBottom="@dimen/margin_normal" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--<androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/root_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,7 +74,7 @@
             app:layout_constraintTop_toTopOf="parent"
             />
 
-        <!-- add hyphenation? "-->
+        &lt;!&ndash; add hyphenation? "&ndash;&gt;
         <TextView
             android:id="@+id/ad_text"
             android:layout_width="0dp"
@@ -46,6 +95,6 @@
             />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout >
+    </androidx.constraintlayout.widget.ConstraintLayout >-->
 
-</layout>
+</com.google.android.material.card.MaterialCardView>
