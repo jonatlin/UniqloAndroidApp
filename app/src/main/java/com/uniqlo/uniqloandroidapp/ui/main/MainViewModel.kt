@@ -9,4 +9,6 @@ class MainViewModel : ViewModel() {
     val title: LiveData<String>
         get() = _title
 
-    fun updateActionBarTitle(title: String) = _title.postValue(title) }
+
+
+}

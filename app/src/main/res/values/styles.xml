@@ -1,13 +1,22 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="AppTheme.Light" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="toolbarStyle">@style/Widget.Uniqlo.Toolbar</item>
        <!-- <item name="fontFamily">@font/source_sans_pro_semibold</item>
         <item name="android:fontFamily">@font/source_sans_pro_semibold</item>-->
+    </style>
+
+    <style name="AppTheme.Dark" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="toolbarStyle">@style/Widget.Uniqlo.Toolbar</item>
+        <!-- <item name="fontFamily">@font/source_sans_pro_semibold</item>
+         <item name="android:fontFamily">@font/source_sans_pro_semibold</item>-->
     </style>
 
     <style name="Widget.Uniqlo.AppBar" parent="@style/Widget.Design.AppBarLayout">
