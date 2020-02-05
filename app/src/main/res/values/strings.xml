@@ -5,9 +5,16 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string-array
-        name="themes">
+        name="theme_titles">
         <item>Light</item>
         <item>Dark</item>
         <item>System</item>
+    </string-array>
+
+    <string-array
+        name="theme_values">
+        <item>LIGHT</item>
+        <item>DARK</item>
+        <item>SYSTEM</item>
     </string-array>
 </resources>

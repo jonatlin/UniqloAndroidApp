@@ -1,13 +1,20 @@
 package com.uniqlo.uniqloandroidapp.ui.main
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import android.app.Application
 import androidx.lifecycle.ViewModel
+import androidx.preference.PreferenceManager
+import com.uniqlo.uniqloandroidapp.util.SharedPreferencesStringLiveData
 
-class MainViewModel : ViewModel() {
-    private val _title = MutableLiveData<String>()
-    val title: LiveData<String>
-        get() = _title
+class MainViewModel(
+    app: Application
+) : ViewModel() {
+   /* private val _name = MutableLiveData<String>()
+    val name: LiveData<String>
+        get() = _name*/
+
+    val prefs = PreferenceManager.getDefaultSharedPreferences(app)
+
+    var theme: SharedPreferencesStringLiveData = SharedPreferencesStringLiveData(prefs, "theme", "SYSTEM")
 
 
 

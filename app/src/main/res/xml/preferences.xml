@@ -9,8 +9,8 @@
         <ListPreference
             app:key="theme"
             app:title="Theme"
-            app:entries="@array/themes"
-            app:entryValues="@array/themes"
+            app:entries="@array/theme_titles"
+            app:entryValues="@array/theme_values"
             app:useSimpleSummaryProvider="true"
             />
 

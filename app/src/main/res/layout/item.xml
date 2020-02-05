@@ -66,7 +66,6 @@
                         android:layout_margin="2dp"
                         android:maxLines="2"
                         android:padding="4dp"
-                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="@dimen/text_size_h3"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -80,7 +79,6 @@
                         app:layout_constraintLeft_toLeftOf="parent"
                         android:textSize="@dimen/text_size_h2"
                         android:textStyle="bold"
-                        android:textColor="@color/colorPrimaryDark"
                         />
 
 
