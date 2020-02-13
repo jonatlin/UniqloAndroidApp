@@ -12,6 +12,23 @@
         <include layout="@layout/main_appbar" />
 
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:id="@+id/progress_bar"
+            android:visibility="visible"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
     <androidx.core.widget.NestedScrollView
             android:id="@+id/nested_scroll"
             android:layout_width="match_parent"
@@ -23,6 +40,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -88,5 +107,6 @@
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
+
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

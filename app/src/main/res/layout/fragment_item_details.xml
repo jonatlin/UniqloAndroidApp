@@ -66,6 +66,13 @@
 
             />
 
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add to Cart"
+            android:layout_margin="@dimen/margin_normal"
+            />
+
     </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>

@@ -1,10 +1,13 @@
 package com.uniqlo.uniqloandroidapp.ui.discover
 
 
+import android.opengl.Visibility
 import android.os.Bundle
 import android.view.*
+import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -35,6 +38,9 @@ class DiscoverFragment : Fragment() {
     private lateinit var itemPreviewAdapter: ItemPreviewAdapter
     private lateinit var adAdapter: AdAdapter
     private lateinit var toolbar: Toolbar
+    private lateinit var nestedScroll: NestedScrollView
+    private lateinit var progressBar: ProgressBar
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setHasOptionsMenu(true)
@@ -68,7 +74,10 @@ class DiscoverFragment : Fragment() {
             when (storeResponse) {
                 is StoreResponse.Error -> {
                     // default values if no backend
-                    updateAdList(mutableListOf(Ad(), Ad(), Ad()))
+                    updateAdList(mutableListOf(Ad(imageUrl="https://objectstorage.us-ashburn-1.oraclecloud.com/n/idi3qahxtzru/b/Uniqlo/o/AD_MARIMEKKO_MERINO-BLEND_PANTS_Brown.jpg"),
+                        Ad(imageUrl="https://objectstorage.us-ashburn-1.oraclecloud.com/n/idi3qahxtzru/b/Uniqlo/o/AD_2-WAY_STRETCH.jpg"),
+                        Ad(imageUrl="https://objectstorage.us-ashburn-1.oraclecloud.com/n/idi3qahxtzru/b/Uniqlo/o/AD_MAGIC_FOR_ALL_ICONS.jpg"),
+                        Ad(imageUrl="https://objectstorage.us-ashburn-1.oraclecloud.com/n/idi3qahxtzru/b/Uniqlo/o/AD_ROGER_FEDERER.jpg")))
                     Timber.d(storeResponse.error)
                 }
                 is StoreResponse.Data -> updateAdList(storeResponse.requireData())
@@ -96,6 +105,25 @@ class DiscoverFragment : Fragment() {
                 }
             })
 
+        // TODO: fix this. hide views until ready
+        viewModel.isLoading.observe(
+            this,
+            Observer {
+                isLoading ->
+                if(isLoading) {
+                    nestedScroll.visibility=View.INVISIBLE
+                    progressBar.visibility= View.VISIBLE
+                    Timber.d("loading")
+                } else {
+                    nestedScroll.visibility=View.VISIBLE
+                    progressBar.visibility= View.INVISIBLE
+                    Timber.d("not loading")
+                }
+
+            }
+
+        )
+
 //        return dataBinding.root
         return root;
     }
@@ -112,6 +140,8 @@ class DiscoverFragment : Fragment() {
         toolbar = view.findViewById(
             R.id.toolbar
         )
+        nestedScroll = view.findViewById(R.id.nested_scroll)
+        progressBar = view.findViewById(R.id.progress_bar)
 
         toolbar.title = "Discover"
         toolbar.inflateMenu(R.menu.discover_menu)
@@ -133,8 +163,6 @@ class DiscoverFragment : Fragment() {
                 }
             }
         )
-
-
 
 
         viewModel.refreshAds()

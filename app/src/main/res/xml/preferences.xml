@@ -14,25 +14,39 @@
             app:useSimpleSummaryProvider="true"
             />
 
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        app:key="profile"
-        app:title="Profile">
-
         <EditTextPreference
             android:key="name"
             android:title="Name"
             android:dialogTitle="Name"
             app:useSimpleSummaryProvider="true"/>
 
-        <EditTextPreference
+    </PreferenceCategory>
+
+    <Preference
+        app:key="payment"
+        app:title="Payment Details"/>
+
+   <!-- <PreferenceCategory
+        app:key="profile"
+        app:title="Profile">
+
+
+
+       &lt;!&ndash; <EditTextPreference
             android:key="email"
             android:title="Email"
             android:dialogTitle="Email"
-            app:useSimpleSummaryProvider="true"/>
+            app:useSimpleSummaryProvider="true"/>&ndash;&gt;
 
 
+    </PreferenceCategory>-->
+    <PreferenceCategory
+        app:key="info"
+        app:title="Info">
+    <Preference
+        app:key="about"
+        app:title="About"/>
     </PreferenceCategory>
+
 
 </PreferenceScreen>

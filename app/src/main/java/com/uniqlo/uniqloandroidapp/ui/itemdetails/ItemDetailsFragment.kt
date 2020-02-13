@@ -51,7 +51,7 @@ class ItemDetailsFragment : Fragment() {
 
             when (storeResponse) {
                 is StoreResponse.Error -> {
-//                    updateImage("https://objectstorage.us-ashburn-1.oraclecloud.com/n/idi3qahxtzru/b/Uniqlo/o/STAR_WARS_FOREVER_UT_STASH_SHORT-SLEEVE_GRAPHIC_T-SHIRT_Black.jpg")
+                    updateItemDetails(Item(imageUrl="https://objectstorage.us-ashburn-1.oraclecloud.com/n/idi3qahxtzru/b/Uniqlo/o/STAR_WARS_FOREVER_UT_STASH_Blue.jpg"))
                     Timber.d(storeResponse.error)
 
                 }

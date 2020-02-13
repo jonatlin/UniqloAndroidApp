@@ -32,7 +32,14 @@ class DiscoverViewModel(
     val popularItemsList: LiveData<StoreResponse<List<Item>>>
         get() = _popularItemsList
 
+    // TODO: use seperate class with flag for each coroutine?
+    private val _isLoading = MutableLiveData<Boolean>(true)
+    val isLoading: LiveData<Boolean>
+        get() = _isLoading
+
     fun refreshAds(isForce: Boolean = false) {
+
+        _isLoading.value = true
 
         // network/cache/db call coroutine scoped to ViewModel
         viewModelScope.launch {
@@ -45,7 +52,12 @@ class DiscoverViewModel(
             } catch(e: Exception){
                 StoreResponse.Error(e, ResponseOrigin.Fetcher)
             }
+
+            _isLoading.value = false
+
+
         }
+
     }
 
     fun refreshPopularItems(isForce: Boolean = false) {

@@ -13,4 +13,4 @@ Backend: https://github.com/jkailin/UniqloBackend
 - Moshi
 - Store
 - Retrofit
-- Room (TDB)
+- Room

@@ -63,10 +63,12 @@ class ResultsFragment : Fragment() {
 
             when (storeResponse) {
                 is StoreResponse.Error -> {
+                    // if server isn't up. However navigation won't make sense.
                     updateItemList(mutableListOf(
                         Item(imageUrl = "https://objectstorage.us-ashburn-1.oraclecloud.com/n/idi3qahxtzru/b/Uniqlo/o/STAR_WARS_FOREVER_UT_STASH_Blue.jpg"),
                         Item(imageUrl = "https://objectstorage.us-ashburn-1.oraclecloud.com/n/idi3qahxtzru/b/Uniqlo/o/TODDLER_MAGIC_FOR_ALL_ICONS_UT_SHORT-SLEEVE_GRAPHIC_T-SHIRT_Yellow.jpg"),
                         Item(imageUrl = "https://objectstorage.us-ashburn-1.oraclecloud.com/n/idi3qahxtzru/b/Uniqlo/o/STAR_WARS_FOREVER_UT_STASH_SHORT-SLEEVE_GRAPHIC_T-SHIRT_Black.jpg")))
+                        updateItemCount(3)
                     Timber.d(storeResponse.error)}
                 is StoreResponse.Data -> updateItemList(storeResponse.requireData())
             }
