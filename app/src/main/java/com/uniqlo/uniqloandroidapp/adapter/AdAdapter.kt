@@ -98,7 +98,7 @@ class AdAdapter : ListAdapter<Ad, AdAdapter.AdViewHolder>(
                     ad.adId
                 )
 
-            Timber.d("navigate to search results of Ad: ${ad.adId}")
+            Timber.d("navigate to add items: ${ad.adId}")
             view.findNavController().navigate(direction)
 
         }

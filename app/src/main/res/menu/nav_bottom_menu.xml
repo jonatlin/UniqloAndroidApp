@@ -7,9 +7,9 @@
         android:title="Discover" />
 
     <item
-        android:id="@+id/fragment_search_dest"
+        android:id="@+id/fragment_browse_dest"
         android:icon="@drawable/ic_search_black_24dp"
-        android:title="Search" />
+        android:title="Browse" />
 
     <item
         android:id="@+id/fragment_cart_dest"

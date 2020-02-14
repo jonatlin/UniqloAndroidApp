@@ -51,7 +51,7 @@ class ItemPreviewAdapter :
                 Glide.with(itemView.context)
                     .load(url)
                     .transition(DrawableTransitionOptions.withCrossFade())
-            .placeholder(R.color.colorPrimaryLight) // doesn't work with resizing?
+                    .placeholder(R.color.colorPrimaryLight) // doesn't work with resizing?
                     .into(itemView.image_preview)
             }
 

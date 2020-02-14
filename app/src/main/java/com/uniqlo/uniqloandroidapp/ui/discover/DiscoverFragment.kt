@@ -74,13 +74,22 @@ class DiscoverFragment : Fragment() {
             when (storeResponse) {
                 is StoreResponse.Error -> {
                     // default values if no backend
-                    updateAdList(mutableListOf(Ad(imageUrl="https://objectstorage.us-ashburn-1.oraclecloud.com/n/idi3qahxtzru/b/Uniqlo/o/AD_MARIMEKKO_MERINO-BLEND_PANTS_Brown.jpg"),
+                    updateAdList(mutableListOf(
+                        Ad(imageUrl="https://objectstorage.us-ashburn-1.oraclecloud.com/n/idi3qahxtzru/b/Uniqlo/o/AD_MARIMEKKO_MERINO-BLEND_PANTS_Brown.jpg"),
                         Ad(imageUrl="https://objectstorage.us-ashburn-1.oraclecloud.com/n/idi3qahxtzru/b/Uniqlo/o/AD_2-WAY_STRETCH.jpg"),
                         Ad(imageUrl="https://objectstorage.us-ashburn-1.oraclecloud.com/n/idi3qahxtzru/b/Uniqlo/o/AD_MAGIC_FOR_ALL_ICONS.jpg"),
                         Ad(imageUrl="https://objectstorage.us-ashburn-1.oraclecloud.com/n/idi3qahxtzru/b/Uniqlo/o/AD_ROGER_FEDERER.jpg")))
                     Timber.d(storeResponse.error)
                 }
-                is StoreResponse.Data -> updateAdList(storeResponse.requireData())
+                is StoreResponse.Loading -> {
+//                    progressBar.visibility= View.VISIBLE
+//                    nestedScroll.visibility=View.INVISIBLE
+                }
+                is StoreResponse.Data -> {
+//                    progressBar.visibility= View.INVISIBLE
+//                    nestedScroll.visibility=View.VISIBLE
+                    updateAdList(storeResponse.requireData())
+                }
             }
         })
 

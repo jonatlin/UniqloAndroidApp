@@ -7,7 +7,7 @@
 
         <variable
             name="viewmodel"
-            type="com.uniqlo.uniqloandroidapp.ui.search.SearchViewModel" />
+            type="com.uniqlo.uniqloandroidapp.ui.browse.BrowseViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

@@ -10,9 +10,7 @@
         android:id="@+id/fragment_discover_dest"
         android:name="com.uniqlo.uniqloandroidapp.ui.discover.DiscoverFragment"
         tools:layout="@layout/fragment_discover">
-        <!--<action
-            android:id="@+id/action_fragment_discover_dest_to_fragment_search_dest"
-            app:destination="@id/fragment_search_dest" />
+        <!--
         <action
             android:id="@+id/action_fragment_discover_dest_to_fragment_cart_dest"
             app:destination="@id/fragment_cart_dest" />-->
@@ -50,9 +48,9 @@
     </fragment>
 
     <fragment
-        android:id="@+id/fragment_search_dest"
-        android:name="com.uniqlo.uniqloandroidapp.ui.search.SearchFragment"
-        tools:layout="@layout/fragment_search">
+        android:id="@+id/fragment_browse_dest"
+        android:name="com.uniqlo.uniqloandroidapp.ui.browse.BrowseFragment"
+        tools:layout="@layout/fragment_browse">
     </fragment>
 
     <fragment
