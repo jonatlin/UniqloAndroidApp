@@ -14,13 +14,13 @@ data class ItemEntity(
     val itemId: String,
 
     @ColumnInfo(name = "quantity")
-    val quantity: Integer,
+    val quantity: Int,
 
     @ColumnInfo(name = "imageUrl")
     val imageUrl: String,
 
     @ColumnInfo(name = "size")
-    val size: String,
+    val size: String = "M",
 
     @ColumnInfo(name = "color")
     val color: String

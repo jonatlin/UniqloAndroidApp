@@ -1,6 +1,6 @@
 package com.uniqlo.uniqloandroidapp.api
 
-import com.uniqlo.uniqloandroidapp.data.*
+import com.uniqlo.uniqloandroidapp.model.*
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

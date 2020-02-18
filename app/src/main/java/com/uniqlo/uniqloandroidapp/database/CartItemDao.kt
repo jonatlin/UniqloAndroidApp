@@ -3,18 +3,29 @@ package com.uniqlo.uniqloandroidapp.database
 import androidx.room.*
 
 @Dao
-interface CartItemDao {
+abstract class CartItemDao {
 
     @Query("SELECT * FROM cart_item")
-    fun get() : List<ItemEntity>
+    abstract fun getAll() : List<ItemEntity>
 
-    @Query("UPDATE cart_item SET quantity=:price WHERE itemId = :id")
-    fun inserta(price: Float?, id: Int)
+    @Query("SELECT * FROM cart_item WHERE itemId=:id")
+    abstract fun getById(id: String): ItemEntity?
 
-    @Update(entity = ItemEntity::class)
-    fun update(item: ItemEntity)
+    @Query("UPDATE cart_item SET quantity=quantity+1 WHERE itemId = :id")
+    abstract fun incrementQuantity(id: String)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(item: ItemEntity)
+    abstract fun insert(item: ItemEntity)
+
+    // If another Item found with same ID increment.
+    fun insertOrUpdate(item: ItemEntity) {
+        val itemFromDb: ItemEntity? = getById(item.itemId)
+        if(itemFromDb==null)
+            insert(item)
+        else
+            incrementQuantity(item.itemId)
+    }
+
+
 
 }

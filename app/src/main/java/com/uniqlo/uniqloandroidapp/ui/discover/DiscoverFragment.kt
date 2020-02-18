@@ -1,26 +1,21 @@
 package com.uniqlo.uniqloandroidapp.ui.discover
 
 
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.*
 import android.widget.ProgressBar
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.RecyclerView
 import com.dropbox.android.external.store4.StoreResponse
-import com.google.android.material.appbar.AppBarLayout
-import com.uniqlo.uniqloandroidapp.MainActivity
 import com.uniqlo.uniqloandroidapp.R
 
 import com.uniqlo.uniqloandroidapp.adapter.AdAdapter
-import com.uniqlo.uniqloandroidapp.adapter.ItemPreviewAdapter
-import com.uniqlo.uniqloandroidapp.data.Ad
-import com.uniqlo.uniqloandroidapp.data.Item
+import com.uniqlo.uniqloandroidapp.adapter.PreviewItemAdapter
+import com.uniqlo.uniqloandroidapp.model.Ad
+import com.uniqlo.uniqloandroidapp.model.Item
 //import com.uniqlo.uniqloandroidapp.databinding.FragmentDiscoverBinding
 import kotlinx.android.synthetic.main.fragment_discover.*
 import timber.log.Timber
@@ -35,7 +30,7 @@ class DiscoverFragment : Fragment() {
     private lateinit var viewModelFactory: DiscoverViewModelFactory
     private lateinit var viewModel: DiscoverViewModel
 
-    private lateinit var itemPreviewAdapter: ItemPreviewAdapter
+    private lateinit var previewItemAdapter: PreviewItemAdapter
     private lateinit var adAdapter: AdAdapter
     private lateinit var toolbar: Toolbar
     private lateinit var nestedScroll: NestedScrollView
@@ -65,7 +60,7 @@ class DiscoverFragment : Fragment() {
 //        dataBinding.viewmodel = viewModel
 
         adAdapter = AdAdapter()
-        itemPreviewAdapter = ItemPreviewAdapter()
+        previewItemAdapter = PreviewItemAdapter()
 
 
         // when ads updated, update UI
@@ -120,12 +115,16 @@ class DiscoverFragment : Fragment() {
             Observer {
                 isLoading ->
                 if(isLoading) {
-                    nestedScroll.visibility=View.INVISIBLE
-                    progressBar.visibility= View.VISIBLE
+//                    nestedScroll.visibility=View.INVISIBLE
+                    progress_bar.visibility=View.VISIBLE
+                    main_content.visibility=View.INVISIBLE
+//                    progressBar.visibility= View.VISIBLE
                     Timber.d("loading")
                 } else {
-                    nestedScroll.visibility=View.VISIBLE
-                    progressBar.visibility= View.INVISIBLE
+//                    nestedScroll.visibility=View.VISIBLE
+                    main_content.visibility=View.VISIBLE
+                    progress_bar.visibility=View.INVISIBLE
+//                    progressBar.visibility= View.INVISIBLE
                     Timber.d("not loading")
                 }
 
@@ -149,8 +148,10 @@ class DiscoverFragment : Fragment() {
         toolbar = view.findViewById(
             R.id.toolbar
         )
-        nestedScroll = view.findViewById(R.id.nested_scroll)
-        progressBar = view.findViewById(R.id.progress_bar)
+//        nestedScroll = view.findViewById(R.id.nested_scroll)
+//        progressBar = view.findViewById(R.id.progress_bar)
+
+
 
         toolbar.title = "Discover"
         toolbar.inflateMenu(R.menu.discover_menu)
@@ -192,9 +193,9 @@ class DiscoverFragment : Fragment() {
     private fun updatePopularItemsList(data: List<Item>) {
 
         if (popular_items_list.adapter == null)
-            popular_items_list.adapter = itemPreviewAdapter
+            popular_items_list.adapter = previewItemAdapter
 
-        itemPreviewAdapter.submitList(data)
+        previewItemAdapter.submitList(data)
 
     }
 

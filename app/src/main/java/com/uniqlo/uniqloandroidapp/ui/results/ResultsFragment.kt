@@ -7,27 +7,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.GridLayoutManager
 import com.dropbox.android.external.store4.StoreResponse
 
 import com.uniqlo.uniqloandroidapp.R
-import com.uniqlo.uniqloandroidapp.adapter.AdAdapter
-import com.uniqlo.uniqloandroidapp.adapter.ItemAdapter
-import com.uniqlo.uniqloandroidapp.data.Item
-import com.uniqlo.uniqloandroidapp.databinding.FragmentResultsBinding
-import com.uniqlo.uniqloandroidapp.ui.discover.DiscoverViewModel
-import com.uniqlo.uniqloandroidapp.ui.discover.DiscoverViewModelFactory
+import com.uniqlo.uniqloandroidapp.adapter.ResultsItemAdapter
+import com.uniqlo.uniqloandroidapp.model.Item
 import kotlinx.android.synthetic.main.fragment_results.*
-import kotlinx.android.synthetic.main.fragment_results.view.*
 import kotlinx.android.synthetic.main.main_appbar.view.*
-import org.w3c.dom.Text
 import timber.log.Timber
 
 /**
@@ -41,7 +33,7 @@ class ResultsFragment : Fragment() {
     private lateinit var viewModelFactory: ResultsViewModelFactory
 
     private lateinit var itemCountText: TextView
-    private val itemAdapter = ItemAdapter()
+    private val itemAdapter = ResultsItemAdapter()
     private lateinit var toolbar: Toolbar
 
 

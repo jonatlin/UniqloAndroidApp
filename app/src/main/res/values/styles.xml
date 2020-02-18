@@ -6,8 +6,8 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="toolbarStyle">@style/Widget.Uniqlo.Toolbar</item>
-       <!-- <item name="fontFamily">@font/source_sans_pro_semibold</item>
-        <item name="android:fontFamily">@font/source_sans_pro_semibold</item>-->
+       <!-- <item_results name="fontFamily">@font/source_sans_pro_semibold</item_results>
+        <item_results name="android:fontFamily">@font/source_sans_pro_semibold</item_results>-->
     </style>
 
     <style name="AppTheme.Dark" parent="Theme.MaterialComponents.DayNight.NoActionBar">
@@ -15,8 +15,8 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="toolbarStyle">@style/Widget.Uniqlo.Toolbar</item>
-        <!-- <item name="fontFamily">@font/source_sans_pro_semibold</item>
-         <item name="android:fontFamily">@font/source_sans_pro_semibold</item>-->
+        <!-- <item_results name="fontFamily">@font/source_sans_pro_semibold</item_results>
+         <item_results name="android:fontFamily">@font/source_sans_pro_semibold</item_results>-->
     </style>
 
     <style name="Widget.Uniqlo.AppBar" parent="@style/Widget.Design.AppBarLayout">

@@ -1,7 +1,6 @@
 package com.uniqlo.uniqloandroidapp.ui.itemdetails
 
 
-import android.opengl.Visibility
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -18,10 +17,8 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.dropbox.android.external.store4.StoreResponse
 
 import com.uniqlo.uniqloandroidapp.R
-import com.uniqlo.uniqloandroidapp.data.Item
-import com.uniqlo.uniqloandroidapp.ui.results.ResultsFragmentArgs
+import com.uniqlo.uniqloandroidapp.model.Item
 import kotlinx.android.synthetic.main.fragment_item_details.*
-import kotlinx.android.synthetic.main.item.view.*
 import kotlinx.android.synthetic.main.main_appbar.*
 import kotlinx.android.synthetic.main.main_appbar.view.*
 import timber.log.Timber
@@ -67,8 +64,10 @@ class ItemDetailsFragment : Fragment() {
 
         })
 
+
+
         if (args.itemId != null) {
-            var id: String = args.itemId!!
+            val id: String = args.itemId!!
             viewModel.updateItem(id)
             Timber.d("Item ID: %s", id)
         }
@@ -79,7 +78,11 @@ class ItemDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-
+        // favorite
+        favorite_icon.setOnClickListener {
+            viewModel.updateFavorite()
+            Timber.d("favorite set to %b", true)
+        }
 
         view.toolbar.navigationIcon =
             AppCompatResources.getDrawable(requireContext(), R.drawable.ic_arrow_back_primary_32dp)

@@ -2,9 +2,9 @@ package com.uniqlo.uniqloandroidapp
 
 import android.app.Application
 import com.dropbox.android.external.store4.Store
-import com.uniqlo.uniqloandroidapp.data.Ad
-import com.uniqlo.uniqloandroidapp.data.Item
-import com.uniqlo.uniqloandroidapp.data.Items
+import com.uniqlo.uniqloandroidapp.model.Ad
+import com.uniqlo.uniqloandroidapp.model.Item
+import com.uniqlo.uniqloandroidapp.model.Items
 import com.uniqlo.uniqloandroidapp.respository.UniqloRepository
 import timber.log.Timber
 

@@ -1,10 +1,8 @@
 package com.uniqlo.uniqloandroidapp.adapter
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -12,28 +10,24 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.uniqlo.uniqloandroidapp.R
-import com.uniqlo.uniqloandroidapp.data.Item
-import com.uniqlo.uniqloandroidapp.databinding.ItemBinding
-import com.uniqlo.uniqloandroidapp.ui.discover.DiscoverFragmentDirections
-import com.uniqlo.uniqloandroidapp.ui.discover.DiscoverViewModel
+import com.uniqlo.uniqloandroidapp.model.Item
 import com.uniqlo.uniqloandroidapp.ui.results.ResultsFragmentDirections
-import kotlinx.android.synthetic.main.item.view.*
-import kotlinx.android.synthetic.main.item_preview.view.*
+import kotlinx.android.synthetic.main.item_results.view.*
 import timber.log.Timber
 
 /**
  * Ad.kt adapter for DiscoverFragment.
  */
-class ItemAdapter : ListAdapter<Item, ItemAdapter.ItemViewHolder>(ItemDiffCallback) {
+class ResultsItemAdapter : ListAdapter<Item, ResultsItemAdapter.ItemViewHolder>(ItemDiffCallback) {
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = getItem(position)
 
         holder.bind(item)
 
-        /* val item = getItem(position)
+        /* val item_results = getItem(position)
 
-        holder.bind(item)*/
+        holder.bind(item_results)*/
 
 
     }
@@ -42,7 +36,7 @@ class ItemAdapter : ListAdapter<Item, ItemAdapter.ItemViewHolder>(ItemDiffCallba
 
         val itemView = LayoutInflater.from(
             parent.context
-        ).inflate(R.layout.item, parent, false)
+        ).inflate(R.layout.item_results, parent, false)
         return ItemViewHolder(itemView)
 
     }
@@ -58,8 +52,8 @@ class ItemAdapter : ListAdapter<Item, ItemAdapter.ItemViewHolder>(ItemDiffCallba
  */
         /*binding.root.favorite_icon.setOnClickListener
         {
-            val favorite = binding.item?.favorite ?: false
-            binding.item?.favorite = !favorite
+            val favorite = binding.item_results?.favorite ?: false
+            binding.item_results?.favorite = !favorite
             Timber.d("favorite is %b", !favorite)
 
             if (!favorite)
@@ -101,7 +95,7 @@ class ItemAdapter : ListAdapter<Item, ItemAdapter.ItemViewHolder>(ItemDiffCallba
 
         }
 
-        // opens a new page to view selected item
+        // opens a new page to view selected item_results
         private fun navigateToItemDetails(
             item: Item,
             view: View
@@ -110,7 +104,7 @@ class ItemAdapter : ListAdapter<Item, ItemAdapter.ItemViewHolder>(ItemDiffCallba
                 ResultsFragmentDirections.actionFragmentResultsDestToFragmentItemDetailsDest(
                     item.itemId)
 
-            Timber.d("navigate to item details with id: %s", item.itemId)
+            Timber.d("navigate to item_results details with id: %s", item.itemId)
             view.findNavController().navigate(direction)
 
         }

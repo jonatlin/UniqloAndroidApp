@@ -1,6 +1,6 @@
 package com.uniqlo.uniqloandroidapp.util
 
-import com.uniqlo.uniqloandroidapp.data.Item
+import com.uniqlo.uniqloandroidapp.model.Item
 
 object DefaultResponseGenerator {
 

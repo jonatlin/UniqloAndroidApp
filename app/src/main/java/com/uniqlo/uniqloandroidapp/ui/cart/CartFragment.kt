@@ -7,13 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.lifecycle.ViewModelProviders
 
 import com.uniqlo.uniqloandroidapp.R
+import com.uniqlo.uniqloandroidapp.ui.discover.DiscoverViewModel
 
 /**
  * A simple [Fragment] subclass.
  */
 class CartFragment : Fragment() {
+
+    private lateinit var viewModelFactory: CartViewModelFactory
+    private lateinit var viewModel: CartViewModel
 
     private lateinit var toolbar: Toolbar
 
@@ -22,8 +27,16 @@ class CartFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cart, container, false)
+
+        val root = inflater.inflate(R.layout.fragment_cart, container, false)
+
+        // only if have parameters
+        viewModelFactory = CartViewModelFactory(activity!!.application)
+        viewModel = ViewModelProviders.of(this, viewModelFactory)
+            .get(CartViewModel::class.java)
+
+
+        return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -39,7 +52,7 @@ class CartFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
 
         super.onActivityCreated(savedInstanceState)
-        (activity as AppCompatActivity).run { supportActionBar?.title = "Cart" }
+//        (activity as AppCompatActivity).run { supportActionBar?.title = "Cart" }
 
 
     }

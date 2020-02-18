@@ -1,4 +1,4 @@
-package com.uniqlo.uniqloandroidapp.data
+package com.uniqlo.uniqloandroidapp.model
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass

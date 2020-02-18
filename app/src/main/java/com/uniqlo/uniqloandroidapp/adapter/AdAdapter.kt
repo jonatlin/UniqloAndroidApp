@@ -1,10 +1,8 @@
 package com.uniqlo.uniqloandroidapp.adapter
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -12,11 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.uniqlo.uniqloandroidapp.R
-import com.uniqlo.uniqloandroidapp.data.Ad
+import com.uniqlo.uniqloandroidapp.model.Ad
 import com.uniqlo.uniqloandroidapp.ui.discover.DiscoverFragmentDirections
-import com.uniqlo.uniqloandroidapp.ui.discover.DiscoverViewModel
 import kotlinx.android.synthetic.main.ad.view.*
-import kotlinx.android.synthetic.main.item.view.*
 import timber.log.Timber
 
 /**
@@ -30,12 +26,12 @@ class AdAdapter : ListAdapter<Ad, AdAdapter.AdViewHolder>(
         val item = getItem(position)
 
         // Image title. Does it look better?
-        /*val textColor: String = "#" + item.textColor
+        /*val textColor: String = "#" + item_results.textColor
 
         val shortDescription: TextView = holder.itemView.findViewById<TextView>(R.id.picture_text)
         shortDescription.setTextColor(Color.parseColor(textColor))*/
 
-        /* if(item.showText==1)
+        /* if(item_results.showText==1)
              shortDescription.visibility = View.VISIBLE
          else
              shortDescription.visibility = View.INVISIBLE*/
