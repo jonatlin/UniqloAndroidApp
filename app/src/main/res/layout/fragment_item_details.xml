@@ -25,8 +25,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
-
         <ImageView
             android:id="@+id/item_image"
             android:contentDescription="Item"
@@ -85,6 +83,7 @@
             />
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/add_to_cart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Add to Cart"

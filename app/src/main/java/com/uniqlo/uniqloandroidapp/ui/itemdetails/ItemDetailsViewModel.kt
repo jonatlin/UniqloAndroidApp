@@ -10,12 +10,13 @@ import com.dropbox.android.external.store4.StoreResponse
 import com.dropbox.android.external.store4.get
 import com.uniqlo.uniqloandroidapp.UniqloApplication
 import com.uniqlo.uniqloandroidapp.model.Item
+import com.uniqlo.uniqloandroidapp.respository.CartRepository
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import java.lang.Exception
 
 class ItemDetailsViewModel(
-    app: Application
+    val app: Application
 
 ) : ViewModel() {
 
@@ -24,6 +25,8 @@ class ItemDetailsViewModel(
     private val _item = MutableLiveData<StoreResponse<Item>>()
     val item: LiveData<StoreResponse<Item>>
         get() = _item
+
+    var cartRepository: CartRepository = CartRepository
 
     fun updateItem(itemId: String) {
         viewModelScope.launch {
@@ -44,9 +47,15 @@ class ItemDetailsViewModel(
 
     }
 
+    // add to cart database
+    fun addItemToCart() {
+        viewModelScope.launch {
+            cartRepository.addItemToCart(app, item.value?.requireData() ?: Item())
+        }
+    }
+
     // TODO update favorite in database
     fun updateFavorite() {
-
 
 
     }

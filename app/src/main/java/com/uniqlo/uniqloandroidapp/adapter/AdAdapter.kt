@@ -26,12 +26,12 @@ class AdAdapter : ListAdapter<Ad, AdAdapter.AdViewHolder>(
         val item = getItem(position)
 
         // Image title. Does it look better?
-        /*val textColor: String = "#" + item_results.textColor
+        /*val textColor: String = "#" + results_item.textColor
 
         val shortDescription: TextView = holder.itemView.findViewById<TextView>(R.id.picture_text)
         shortDescription.setTextColor(Color.parseColor(textColor))*/
 
-        /* if(item_results.showText==1)
+        /* if(results_item.showText==1)
              shortDescription.visibility = View.VISIBLE
          else
              shortDescription.visibility = View.INVISIBLE*/

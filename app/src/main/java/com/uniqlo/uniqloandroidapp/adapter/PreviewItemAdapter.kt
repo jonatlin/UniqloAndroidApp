@@ -12,7 +12,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.uniqlo.uniqloandroidapp.R
 import com.uniqlo.uniqloandroidapp.model.Item
 import com.uniqlo.uniqloandroidapp.ui.discover.DiscoverFragmentDirections
-import kotlinx.android.synthetic.main.item_preview.view.*
+import kotlinx.android.synthetic.main.preview_item.view.*
 import timber.log.Timber
 
 
@@ -22,7 +22,7 @@ class PreviewItemAdapter :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemPreviewViewHolder {
         val itemView = LayoutInflater.from(
             parent.context
-        ).inflate(R.layout.item_preview, parent, false)
+        ).inflate(R.layout.preview_item, parent, false)
         return ItemPreviewViewHolder(itemView)
     }
 
@@ -55,7 +55,7 @@ class PreviewItemAdapter :
 
         }
 
-        // opens a new page to view selected item_results
+        // opens a new page to view selected results_item
         private fun navigateToItemDetails(
             item: Item,
             view: View
@@ -64,7 +64,7 @@ class PreviewItemAdapter :
                 DiscoverFragmentDirections.actionFragmentDiscoverDestToFragmentItemDetailsDest(
                     item.itemId)
 
-            Timber.d("navigate to item_results details with id: %s", item.itemId)
+            Timber.d("navigate to results_item details with id: %s", item.itemId)
             view.findNavController().navigate(direction)
 
         }

@@ -70,6 +70,8 @@ class ItemDetailsFragment : Fragment() {
             val id: String = args.itemId!!
             viewModel.updateItem(id)
             Timber.d("Item ID: %s", id)
+        } else {
+            viewModel.updateItem("0")
         }
 
 
@@ -89,6 +91,11 @@ class ItemDetailsFragment : Fragment() {
         (view.toolbar as Toolbar).setNavigationOnClickListener(
             View.OnClickListener { findNavController().navigateUp() }
         )
+
+        add_to_cart.setOnClickListener(
+            View.OnClickListener { _ -> viewModel.addItemToCart() }
+        )
+
     }
 
     private fun updateItemDetails(item: Item) {

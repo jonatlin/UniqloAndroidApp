@@ -6,21 +6,25 @@ import androidx.room.*
 abstract class CartItemDao {
 
     @Query("SELECT * FROM cart_item")
-    abstract fun getAll() : List<ItemEntity>
+    abstract suspend fun getAll() : List<CartItemEntity>
 
     @Query("SELECT * FROM cart_item WHERE itemId=:id")
-    abstract fun getById(id: String): ItemEntity?
+    abstract suspend fun getById(id: String): CartItemEntity?
 
     @Query("UPDATE cart_item SET quantity=quantity+1 WHERE itemId = :id")
-    abstract fun incrementQuantity(id: String)
+    abstract suspend fun incrementQuantity(id: String)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun insert(item: ItemEntity)
+    abstract suspend fun insert(item: CartItemEntity)
 
-    // If another Item found with same ID increment.
-    fun insertOrUpdate(item: ItemEntity) {
-        val itemFromDb: ItemEntity? = getById(item.itemId)
-        if(itemFromDb==null)
+    @Delete
+    abstract suspend fun delete(item: CartItemEntity)
+
+    // If another Item found with same ID increment. @Transaction allows to run off main thread.
+    @Transaction
+    open suspend fun insertOrUpdate(item: CartItemEntity) {
+        val cartItemFromDb: CartItemEntity? = getById(item.itemId)
+        if(cartItemFromDb==null)
             insert(item)
         else
             incrementQuantity(item.itemId)

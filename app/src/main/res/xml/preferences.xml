@@ -9,22 +9,27 @@
         <ListPreference
             app:key="theme"
             app:title="Theme"
+            android:icon="@drawable/ic_color_lens_black_24dp"
             app:entries="@array/theme_titles"
             app:entryValues="@array/theme_values"
             app:useSimpleSummaryProvider="true"
+
             />
 
         <EditTextPreference
             android:key="name"
             android:title="Name"
             android:dialogTitle="Name"
+            android:icon="@drawable/ic_settings_black_24dp"
             app:useSimpleSummaryProvider="true"/>
 
     </PreferenceCategory>
 
     <Preference
         app:key="payment"
-        app:title="Payment Details"/>
+        app:title="Payment Details"
+        android:icon="@drawable/ic_payment_black_24dp"
+        />
 
    <!-- <PreferenceCategory
         app:key="profile"
@@ -45,7 +50,9 @@
         app:title="Info">
     <Preference
         app:key="about"
-        app:title="About"/>
+        app:title="About"
+        android:icon="@drawable/ic_info_outline_black_24dp"
+        />
     </PreferenceCategory>
 
 

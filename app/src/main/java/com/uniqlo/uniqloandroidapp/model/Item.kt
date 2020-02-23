@@ -13,7 +13,7 @@ data class Item constructor(
     @Json(name = "ITEM_IMAGE")
     var imageUrl: String = "https://objectstorage.us-ashburn-1.oraclecloud.com/n/idi3qahxtzru/b/Uniqlo/o/MEN_FLEECE_HALF-ZIP_PULLOVER_Blue.jpg",
     @Json(name = "ORIGINAL_PRICE")
-    var originalPrice: Float? = 10f,
+    var originalPrice: Float = 10f,
     @Json(name = "DISCOUNT_PRICE")
     var discountPrice: Float? = 5f,
     var favorite: Boolean = false,

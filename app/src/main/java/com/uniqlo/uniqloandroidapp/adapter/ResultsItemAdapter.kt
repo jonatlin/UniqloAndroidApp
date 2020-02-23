@@ -12,7 +12,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.uniqlo.uniqloandroidapp.R
 import com.uniqlo.uniqloandroidapp.model.Item
 import com.uniqlo.uniqloandroidapp.ui.results.ResultsFragmentDirections
-import kotlinx.android.synthetic.main.item_results.view.*
+import kotlinx.android.synthetic.main.results_item.view.*
 import timber.log.Timber
 
 /**
@@ -25,9 +25,9 @@ class ResultsItemAdapter : ListAdapter<Item, ResultsItemAdapter.ItemViewHolder>(
 
         holder.bind(item)
 
-        /* val item_results = getItem(position)
+        /* val results_item = getItem(position)
 
-        holder.bind(item_results)*/
+        holder.bind(results_item)*/
 
 
     }
@@ -36,7 +36,7 @@ class ResultsItemAdapter : ListAdapter<Item, ResultsItemAdapter.ItemViewHolder>(
 
         val itemView = LayoutInflater.from(
             parent.context
-        ).inflate(R.layout.item_results, parent, false)
+        ).inflate(R.layout.results_item, parent, false)
         return ItemViewHolder(itemView)
 
     }
@@ -52,8 +52,8 @@ class ResultsItemAdapter : ListAdapter<Item, ResultsItemAdapter.ItemViewHolder>(
  */
         /*binding.root.favorite_icon.setOnClickListener
         {
-            val favorite = binding.item_results?.favorite ?: false
-            binding.item_results?.favorite = !favorite
+            val favorite = binding.results_item?.favorite ?: false
+            binding.results_item?.favorite = !favorite
             Timber.d("favorite is %b", !favorite)
 
             if (!favorite)
@@ -95,7 +95,7 @@ class ResultsItemAdapter : ListAdapter<Item, ResultsItemAdapter.ItemViewHolder>(
 
         }
 
-        // opens a new page to view selected item_results
+        // opens a new page to view selected results_item
         private fun navigateToItemDetails(
             item: Item,
             view: View
@@ -104,7 +104,7 @@ class ResultsItemAdapter : ListAdapter<Item, ResultsItemAdapter.ItemViewHolder>(
                 ResultsFragmentDirections.actionFragmentResultsDestToFragmentItemDetailsDest(
                     item.itemId)
 
-            Timber.d("navigate to item_results details with id: %s", item.itemId)
+            Timber.d("navigate to results_item details with id: %s", item.itemId)
             view.findNavController().navigate(direction)
 
         }

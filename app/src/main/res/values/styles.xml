@@ -6,8 +6,8 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="toolbarStyle">@style/Widget.Uniqlo.Toolbar</item>
-       <!-- <item_results name="fontFamily">@font/source_sans_pro_semibold</item_results>
-        <item_results name="android:fontFamily">@font/source_sans_pro_semibold</item_results>-->
+       <!-- <results_item name="fontFamily">@font/source_sans_pro_semibold</results_item>
+        <results_item name="android:fontFamily">@font/source_sans_pro_semibold</results_item>-->
     </style>
 
     <style name="AppTheme.Dark" parent="Theme.MaterialComponents.DayNight.NoActionBar">
@@ -15,8 +15,8 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="toolbarStyle">@style/Widget.Uniqlo.Toolbar</item>
-        <!-- <item_results name="fontFamily">@font/source_sans_pro_semibold</item_results>
-         <item_results name="android:fontFamily">@font/source_sans_pro_semibold</item_results>-->
+        <!-- <results_item name="fontFamily">@font/source_sans_pro_semibold</results_item>
+         <results_item name="android:fontFamily">@font/source_sans_pro_semibold</results_item>-->
     </style>
 
     <style name="Widget.Uniqlo.AppBar" parent="@style/Widget.Design.AppBarLayout">
@@ -50,6 +50,15 @@
     </style>
 
     <style name="TextAppearance.Uniqlo.Discover.ItemBody" parent="TextAppearance.MaterialComponents.Body1" >
+        <item name="android:textColor">?android:textColorSecondary</item>
+    </style>
+
+    <!--Cart-->
+    <style name="TextAppearance.Uniqlo.Cart.Name" parent="TextAppearance.MaterialComponents.Body1" >
+        <item name="android:textColor">?android:textColorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Uniqlo.Cart.Body" parent="TextAppearance.MaterialComponents.Body2" >
         <item name="android:textColor">?android:textColorSecondary</item>
     </style>
 
