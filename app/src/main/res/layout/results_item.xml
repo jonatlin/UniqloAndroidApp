@@ -49,6 +49,7 @@
                     app:layout_constraintDimensionRatio="1:1"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
+                    android:transitionName="shared_image"
                     />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

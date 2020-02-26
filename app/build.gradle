@@ -75,9 +75,11 @@ dependencies {
     implementation "androidx.room:room-ktx:$rootProject.roomVersion"
     kapt "androidx.room:room-compiler:$rootProject.roomVersion"
 
-
     // Material Design
     implementation "com.google.android.material:material:$rootProject.materialVersion"
+
+    // lottie
+    implementation "com.airbnb.android:lottie:$rootProject.lottieVersion"
 
     //Epoxy
     implementation 'com.airbnb.android:epoxy:3.5.0'

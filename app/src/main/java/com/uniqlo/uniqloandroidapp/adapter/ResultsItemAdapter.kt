@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -104,8 +105,12 @@ class ResultsItemAdapter : ListAdapter<Item, ResultsItemAdapter.ItemViewHolder>(
                 ResultsFragmentDirections.actionFragmentResultsDestToFragmentItemDetailsDest(
                     item.itemId)
 
+            // motion settings for navigation
+            val extras =  FragmentNavigatorExtras(view.item_image to view.item_image.transitionName)
+
+
             Timber.d("navigate to results_item details with id: %s", item.itemId)
-            view.findNavController().navigate(direction)
+            view.findNavController().navigate(direction, extras)
 
         }
     }

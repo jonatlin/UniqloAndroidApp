@@ -12,7 +12,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
+import android.transition.*
 import com.dropbox.android.external.store4.StoreResponse
+import com.google.android.material.resources.MaterialAttributes
+import com.google.android.material.transition.MaterialContainerTransform
 
 import com.uniqlo.uniqloandroidapp.R
 import com.uniqlo.uniqloandroidapp.adapter.CartItemAdapter

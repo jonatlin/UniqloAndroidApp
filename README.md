@@ -9,6 +9,7 @@ Backend: https://github.com/jkailin/UniqloBackend
 - Coroutines
 - Glide
 - Jetpack
+- Lottie
 - Material Design
 - Moshi
 - Store
