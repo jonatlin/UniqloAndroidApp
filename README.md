@@ -15,3 +15,5 @@ Backend: https://github.com/jkailin/UniqloBackend
 - Store
 - Retrofit
 - Room
+
+<img src="https://github.com/jkailin/UniqloAndroidApp/blob/master/screenshots/HomeScreen.png" width="400px">
